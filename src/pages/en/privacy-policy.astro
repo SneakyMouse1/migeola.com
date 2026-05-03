@@ -1,0 +1,89 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { t } from "../../i18n/translations";
+
+const lang = "en";
+const tr = t.en;
+---
+
+<Layout 
+  title="Privacy Policy | Migeola" 
+  description="Privacy Policy for Migeola website." 
+  lang={lang} 
+  canonical="https://migeola.com/en/privacy-policy/"
+  plUrl="https://migeola.com/polityka-prywatnosci/"
+  enUrl="https://migeola.com/en/privacy-policy/"
+>
+  <Header lang={lang} tr={tr} />
+  
+  <main class="max-w-4xl mx-auto px-6 py-20">
+    <h1 class="text-3xl md:text-4xl font-bold mb-10 text-text-primary">Privacy Policy</h1>
+    
+    <div class="space-y-8 text-text-primary">
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">1. Data Controller</h2>
+        <p>The Data Controller is <strong>JDG Migeola Artem Cherepanov</strong>, located at ul. Ostrobramska 101, 04-041 Warsaw, Poland.</p>
+        <p>You can contact the Controller via email: <a href="mailto:info@migeola.com" class="text-accent hover:underline">info@migeola.com</a> or phone: +48 666 557 461.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">2. What data we collect</h2>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>Contact data provided by the user in the form:</strong> name, email address, phone number, and message content.</li>
+          <li><strong>Technical data collected automatically:</strong> IP address, browser type, session data — processed only with prior consent.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">3. Purpose and legal basis</h2>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>Responding to inquiries:</strong> Art. 6(1)(b) GDPR (performance of a contract / pre-contractual steps).</li>
+          <li><strong>Marketing:</strong> Art. 6(1)(a) GDPR (consent).</li>
+          <li><strong>Legal obligations:</strong> Art. 6(1)(c) GDPR (e.g., tax and accounting requirements).</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">4. Data recipients</h2>
+        <p>Data may be transferred to entities processing it on our behalf, such as IT service providers (hosting, email) – solely based on data processing agreements. Furthermore, data may be shared with public authorities only when required by law.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">5. Transfers outside EEA</h2>
+        <p>If data is transferred to countries outside the European Economic Area (EEA), we implement appropriate safeguards, such as standard contractual clauses approved by the European Commission.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">6. Retention period</h2>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>Inquiries and contact form data:</strong> up to 3 years from the last contact.</li>
+          <li><strong>Accounting data:</strong> 5 years from the end of the calendar year (Accounting Act requirement).</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">7. Your rights</h2>
+        <p>Every user has the right to:</p>
+        <ul class="list-disc pl-5 space-y-2 mb-3">
+          <li>Access their data, rectify it, erase it, restrict processing, data portability, and object to processing.</li>
+          <li>Withdraw consent at any time (without affecting the lawfulness of processing based on consent before its withdrawal).</li>
+        </ul>
+        <p>Users also have the right to lodge a complaint with a supervisory authority: President of the Personal Data Protection Office (UODO), ul. Stawki 2, 00-193 Warsaw, Poland, <a href="https://uodo.gov.pl" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">uodo.gov.pl</a>.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">8. Cookies</h2>
+        <p>Our website uses cookies. Detailed information can be found in our <a href="/en/cookie-policy" class="text-accent hover:underline">Cookie Policy</a>.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">9. Changes to this policy</h2>
+        <p>We reserve the right to update this Privacy Policy. Last updated: April 23, 2026.</p>
+      </section>
+    </div>
+  </main>
+  
+  <Footer lang={lang} tr={tr} />
+</Layout>

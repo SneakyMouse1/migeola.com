@@ -1,0 +1,49 @@
+---
+import SectionHeader from "../ui/SectionHeader.astro";
+import ServiceCard from "../ui/ServiceCard.astro";
+
+const { tr } = Astro.props;
+---
+
+<section class="py-20 lg:py-28 bg-bg-base" id="services">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div data-reveal>
+      <SectionHeader
+        label={tr.services_label}
+        title={tr.services_title}
+        align="center"
+      />
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
+      <div data-reveal data-delay="100" class="h-full">
+        <ServiceCard
+          title={tr.svc_1_title}
+          items={tr.svc_1_items}
+          icon="truck"
+        />
+      </div>
+      <div data-reveal data-delay="200" class="h-full">
+        <ServiceCard
+          title={tr.svc_2_title}
+          items={tr.svc_2_items}
+          icon="package-open"
+        />
+      </div>
+      <div data-reveal data-delay="300" class="h-full">
+        <ServiceCard
+          title={tr.svc_3_title}
+          items={tr.svc_3_items}
+          icon="search"
+        />
+      </div>
+      <div data-reveal data-delay="400" class="h-full">
+        <ServiceCard
+          title={tr.svc_4_title}
+          items={tr.svc_4_items}
+          icon="shield-check"
+        />
+      </div>
+    </div>
+  </div>
+</section>

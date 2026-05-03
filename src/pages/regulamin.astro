@@ -1,0 +1,86 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { t } from "../i18n/translations";
+
+const lang = "pl";
+const tr = t.pl;
+---
+
+<Layout 
+  title="Regulamin Serwisu | Migeola" 
+  description="Regulamin korzystania z serwisu Migeola." 
+  lang={lang} 
+  canonical="https://migeola.com/regulamin/"
+  plUrl="https://migeola.com/regulamin/"
+  enUrl="https://migeola.com/en/terms-of-use/"
+>
+  <Header lang={lang} tr={tr} />
+  
+  <main class="max-w-4xl mx-auto px-6 py-20">
+    <h1 class="text-3xl md:text-4xl font-bold mb-10 text-text-primary">Regulamin Serwisu</h1>
+    
+    <div class="space-y-8 text-text-primary">
+      <p>Podstawa prawna: Ustawa z dnia 18 lipca 2002 r. o świadczeniu usług drogą elektroniczną (Dz.U. 2002 nr 144 poz. 1204).</p>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">1. Postanowienia ogólne</h2>
+        <ul class="list-disc pl-5 space-y-2">
+          <li>Właścicielem serwisu jest JDG Migeola Artem Cherepanov z siedzibą pod adresem ul. Ostrobramska 101, 04-041 Warszawa, Polska.</li>
+          <li>Serwis dostępny jest pod adresem: <a href="https://migeola.com" class="text-accent hover:underline">https://migeola.com</a></li>
+          <li>Serwis ma charakter wyłącznie informacyjny. Nie jest sklepem internetowym i nie umożliwia zawierania umów online.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">2. Warunki korzystania</h2>
+        <ul class="list-disc pl-5 space-y-2">
+          <li>Korzystanie z serwisu jest bezpłatne.</li>
+          <li>Użytkownik zobowiązuje się do korzystania z serwisu w sposób zgodny z obowiązującym prawem, zasadami współżycia społecznego oraz dobrymi obyczajami.</li>
+          <li>Zabrania się kopiowania, modyfikowania i rozpowszechniania treści dostępnych w serwisie bez uprzedniej, pisemnej zgody właściciela.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">3. Usługi elektroniczne</h2>
+        <ul class="list-disc pl-5 space-y-2">
+          <li>W ramach serwisu świadczona jest usługa udostępnienia formularza kontaktowego.</li>
+          <li>Umowa o świadczenie usługi drogą elektroniczną zawierana jest na czas korzystania z serwisu i ulega rozwiązaniu z chwilą jego opuszczenia przez użytkownika.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">4. Własność intelektualna</h2>
+        <p>Wszelkie treści, artykuły, logotypy i grafiki zamieszczone w serwisie są własnością JDG Migeola Artem Cherepanov lub podmiotów współpracujących. Ich kopiowanie, powielanie lub wykorzystywanie bez wyraźnej pisemnej zgody jest zabronione.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">5. Odpowiedzialność</h2>
+        <ul class="list-disc pl-5 space-y-2">
+          <li>Usługodawca nie ponosi odpowiedzialności za ewentualne przerwy techniczne w funkcjonowaniu serwisu wynikające z przyczyn niezależnych (np. awarie serwerów, działania siły wyższej).</li>
+          <li>Informacje prezentowane na stronie mają charakter ogólny i nie stanowią oferty w rozumieniu przepisów Kodeksu Cywilnego.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">6. Reklamacje</h2>
+        <ul class="list-disc pl-5 space-y-2">
+          <li>Wszelkie reklamacje dotyczące funkcjonowania serwisu należy kierować na adres email: <a href="mailto:info@migeola.com" class="text-accent hover:underline">info@migeola.com</a>.</li>
+          <li>Reklamacje będą rozpatrywane w terminie do 14 dni od daty ich otrzymania.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">7. Postanowienia końcowe</h2>
+        <ul class="list-disc pl-5 space-y-2">
+          <li>W sprawach nieuregulowanych niniejszym Regulaminem zastosowanie mają odpowiednie przepisy prawa polskiego.</li>
+          <li>Sądem właściwym do rozstrzygania ewentualnych sporów jest sąd powszechny właściwy dla siedziby Usługodawcy (sądy polskie).</li>
+          <li>Regulamin wchodzi w życie z dniem 23 kwietnia 2026 r.</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+  
+  <Footer lang={lang} tr={tr} />
+</Layout>

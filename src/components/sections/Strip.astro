@@ -1,0 +1,33 @@
+---
+const { tr } = Astro.props;
+
+const items = [
+  { icon: 'check-circle', key: 'strip_stat_1' },
+  { icon: 'globe',        key: 'strip_stat_2' },
+  { icon: 'building-2',   key: 'strip_stat_3' },
+  { icon: 'user-check',   key: 'strip_stat_4' },
+];
+---
+
+<section class="strip py-4">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="flex flex-wrap justify-center gap-x-10 gap-y-3">
+      <span class="flex items-center gap-2 text-sm text-text-secondary">
+        <i data-lucide="check-circle" class="w-4 h-4 shrink-0 text-accent" aria-hidden="true"></i>
+        {tr.strip_stat_1}
+      </span>
+      <span class="flex items-center gap-2 text-sm text-text-secondary">
+        <i data-lucide="globe" class="w-4 h-4 shrink-0 text-accent" aria-hidden="true"></i>
+        {tr.strip_stat_2}
+      </span>
+      <span class="flex items-center gap-2 text-sm text-text-secondary">
+        <i data-lucide="building-2" class="w-4 h-4 shrink-0 text-accent" aria-hidden="true"></i>
+        {tr.strip_stat_3}
+      </span>
+      <span class="flex items-center gap-2 text-sm text-text-secondary">
+        <i data-lucide="user-check" class="w-4 h-4 shrink-0 text-accent" aria-hidden="true"></i>
+        {tr.strip_stat_4}
+      </span>
+    </div>
+  </div>
+</section>

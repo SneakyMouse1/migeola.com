@@ -1,0 +1,82 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { t } from "../../i18n/translations";
+
+const lang = "en";
+const tr = t.en;
+---
+
+<Layout 
+  title="Cookie Policy | Migeola" 
+  description="Cookie Policy for the Migeola website." 
+  lang={lang} 
+  canonical="https://migeola.com/en/cookie-policy/"
+  plUrl="https://migeola.com/polityka-cookies/"
+  enUrl="https://migeola.com/en/cookie-policy/"
+>
+  <Header lang={lang} tr={tr} />
+  
+  <main class="max-w-4xl mx-auto px-6 py-20">
+    <h1 class="text-3xl md:text-4xl font-bold mb-10 text-text-primary">Cookie Policy</h1>
+    
+    <div class="space-y-8 text-text-primary">
+      <p>Legal basis: Art. 173 of the Telecommunications Act and GDPR.</p>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">1. What are cookies?</h2>
+        <p>Cookies are small IT data elements, in particular text files, which are stored on the end user's device and intended for using the website's pages. Cookies usually contain the name of the website they come from, their storage time on the end device, and a unique number.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">2. What cookies do we use?</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse mt-4">
+            <thead>
+              <tr class="border-b border-border">
+                <th class="py-3 px-4">Type</th>
+                <th class="py-3 px-4">Name</th>
+                <th class="py-3 px-4">Purpose</th>
+                <th class="py-3 px-4">Period</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-border">
+                <td class="py-3 px-4">Necessary</td>
+                <td class="py-3 px-4">cookiehub</td>
+                <td class="py-3 px-4">Storing user consent preferences regarding cookies</td>
+                <td class="py-3 px-4">1 year</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">3. Legal basis</h2>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>Necessary cookies:</strong> Art. 6(1)(f) GDPR (legitimate interest in the proper functioning of the website).</li>
+          <li><strong>Other cookies:</strong> Art. 6(1)(a) GDPR (user consent expressed through the banner).</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">4. Managing consent</h2>
+        <p>Consent to the use of optional cookies is expressed by the user via the CookieHub tool. The user has the ability to change their preferences or withdraw consent at any time using the widget available on the website.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">5. How to disable cookies in your browser?</h2>
+        <p>You can block or delete cookies directly in the settings of your web browser. Detailed instructions are available on the official support pages of browser developers (Chrome, Firefox, Safari, Edge, etc.).</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">6. Contact</h2>
+        <p>If you have any questions regarding our Cookie Policy, please contact us at: <a href="mailto:info@migeola.com" class="text-accent hover:underline">info@migeola.com</a>.</p>
+      </section>
+    </div>
+  </main>
+  
+  <Footer lang={lang} tr={tr} />
+</Layout>

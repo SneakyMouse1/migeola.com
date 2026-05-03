@@ -1,0 +1,78 @@
+---
+const {
+  img,
+  from,
+  to,
+  fromFlag,
+  toFlag,
+  title,
+  count,
+  transport,
+  client,
+  duration,
+  desc,
+} = Astro.props;
+---
+
+<article
+  class="card overflow-hidden flex flex-col h-full"
+  style="border-radius: 0.75rem;"
+>
+  <div class="p-5 flex flex-col gap-3 flex-1 text-sm">
+    <div class="flex items-center justify-between mb-1">
+      <div
+        class="flex items-center gap-2 text-sm font-bold text-text-primary"
+      >
+        <span aria-label={from} class="text-base">{fromFlag}</span>
+        <span>{from}</span>
+        <span class="px-1 text-accent">→</span>
+        <span>{to}</span>
+        <span aria-label={to} class="text-base">{toFlag}</span>
+      </div>
+      <span class="text-xs font-bold text-accent"
+        >{duration}</span
+      >
+    </div>
+
+    <!-- Photo / Placeholder -->
+    {
+      img ? (
+        <div class="w-full aspect-video overflow-hidden rounded-lg">
+          <img src={img} alt={title} class="w-full h-full object-cover" />
+        </div>
+      ) : (
+        <div
+          class="w-full aspect-video flex justify-center items-center overflow-hidden bg-bg-surface border border-dashed border-border rounded-lg"
+        >
+          <i
+            data-lucide="image"
+            class="w-6 h-6 opacity-30 text-text-secondary"
+            aria-hidden="true"
+          />
+        </div>
+      )
+    }
+
+    <h3 class="font-semibold leading-snug text-text-primary">
+      {title}
+    </h3>
+    <p class="text-text-secondary">
+      {count} · {transport}
+    </p>
+    {
+      desc && (
+        <p
+          class="text-xs leading-relaxed opacity-80 text-text-secondary"
+        >
+          {desc}
+        </p>
+      )
+    }
+    <div
+      class="mt-auto flex items-center gap-1.5 text-xs pt-3 border-t text-text-secondary border-border"
+    >
+      <i data-lucide="building" class="w-3 h-3 shrink-0" aria-hidden="true"></i>
+      {client}
+    </div>
+  </div>
+</article>

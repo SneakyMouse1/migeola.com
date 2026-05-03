@@ -1,0 +1,21 @@
+---
+const { label, id, required = false, rows = 4, ...rest } = Astro.props;
+---
+
+<div>
+  <label
+    class="block text-xs font-semibold uppercase tracking-widest mb-1.5 text-text-secondary"
+    for={id}
+  >
+    {label}{required && ' *'}
+  </label>
+  <textarea
+    id={id}
+    required={required}
+    rows={rows}
+    class="w-full rounded-lg px-4 py-3 text-sm transition-colors resize-none bg-bg-card border border-border text-text-primary outline-none focus:border-accent/50 focus:ring-4 focus:ring-accent-glow placeholder:text-text-muted"
+    {...rest}
+  ></textarea>
+</div>
+
+

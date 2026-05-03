@@ -1,0 +1,38 @@
+---
+const {
+  label,
+  title,
+  subtitle,
+  align = "center",
+  class: className = "",
+} = Astro.props;
+const alignClass = align === "left" ? "text-left" : "text-center mx-auto";
+---
+
+<div class={`max-w-2xl mb-12 ${alignClass} ${className}`}>
+  {
+    label && (
+      <span
+        class="inline-block text-xs font-semibold tracking-widest uppercase mb-3 text-accent"
+      >
+        {label}
+      </span>
+    )
+  }
+  {
+    title && (
+      <h2
+        class="text-3xl md:text-4xl font-bold mb-4 leading-tight text-text-primary"
+      >
+        {title}
+      </h2>
+    )
+  }
+  {
+    subtitle && (
+      <p class="text-lg leading-relaxed text-text-secondary">
+        {subtitle}
+      </p>
+    )
+  }
+</div>

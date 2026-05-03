@@ -1,0 +1,35 @@
+---
+import Header from "./Header.astro";
+import Footer from "./Footer.astro";
+import Hero from "./sections/Hero.astro";
+import Strip from "./sections/Strip.astro";
+import Services from "./sections/Services.astro";
+import About from "./sections/About.astro";
+import Equipment from "./sections/Equipment.astro";
+import EquipmentSales from "./sections/EquipmentSales.astro";
+import Cases from "./sections/Cases.astro";
+import WhyUs from "./sections/WhyUs.astro";
+import Faq from "./sections/Faq.astro";
+import Cta from "./sections/Cta.astro";
+import Contact from "./sections/Contact.astro";
+
+const { lang, tr } = Astro.props;
+---
+
+<Header lang={lang} tr={tr} />
+
+<main>
+  <Hero tr={tr} />
+  <Strip tr={tr} />
+  <Services tr={tr} />
+  <About tr={tr} />
+  <Equipment tr={tr} />
+  <EquipmentSales tr={tr} />
+  <Cases tr={tr} />
+  <WhyUs tr={tr} />
+  <Faq tr={tr} />
+  <Cta tr={tr} />
+  <Contact lang={lang} tr={tr} />
+</main>
+
+<Footer lang={lang} tr={tr} />

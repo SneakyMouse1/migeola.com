@@ -1,0 +1,64 @@
+---
+import Button from "../ui/Button.astro";
+import SectionHeader from "../ui/SectionHeader.astro";
+
+const { tr } = Astro.props;
+
+const stats = [
+  { value: '47+', label: tr.about_stat_1 ?? 'Zrealizowanych projektów' },
+  { value: '4',   label: tr.about_stat_2 ?? 'Kontynenty' },
+  { value: '100%', label: tr.about_stat_3 ?? 'Klienci B2B' },
+  { value: '24h', label: tr.about_stat_4 ?? 'Czas odpowiedzi' },
+];
+---
+
+<section id="about" class="py-20 lg:py-28 bg-bg-surface">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+      <!-- Left Column: Text content -->
+      <div data-reveal>
+        <SectionHeader
+          label={tr.about_label}
+          title={tr.about_title}
+          align="left"
+          class="mb-6"
+        />
+
+        <p class="text-base leading-relaxed mb-4 text-text-secondary">
+          {tr.about_p1}
+        </p>
+        <p class="text-base leading-relaxed mb-4 text-text-secondary">
+          {tr.about_p2}
+        </p>
+        <p class="text-base font-semibold leading-relaxed mb-8 text-text-primary">
+          {tr.about_p3}
+        </p>
+
+        <Button href="#contact" variant="ghost">
+          {tr.about_cta}
+        </Button>
+      </div>
+
+      <!-- Right Column: 2x2 Statistics Grid -->
+      <div class="grid grid-cols-2 gap-4" data-reveal data-delay="200">
+        {stats.map((stat) => (
+          <div
+            class="card p-6 flex flex-col"
+          >
+            <div
+              class="text-3xl lg:text-4xl font-bold mb-1 text-accent"
+              style="font-family: 'Sora', sans-serif;"
+            >
+              {stat.value}
+            </div>
+            <div class="text-sm mt-1 text-text-secondary">
+              {stat.label}
+            </div>
+          </div>
+        ))}
+      </div>
+
+    </div>
+  </div>
+</section>

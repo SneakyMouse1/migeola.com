@@ -1,0 +1,120 @@
+---
+import SectionHeader from "../ui/SectionHeader.astro";
+import Button from "../ui/Button.astro";
+import EquipmentCard from "../ui/EquipmentCard.astro";
+
+const { tr } = Astro.props;
+
+const steps = [
+  {
+    n: 1,
+    icon: 'search',
+    titlePL: 'Wyszukanie dostawcy',
+    titleEN: 'Supplier Sourcing',
+  },
+  {
+    n: 2,
+    icon: 'handshake',
+    titlePL: 'Zakup & Negocjacje',
+    titleEN: 'Purchase & Negotiations',
+  },
+  {
+    n: 3,
+    icon: 'truck',
+    titlePL: 'Dostawa na miejsce',
+    titleEN: 'Delivery on site',
+  },
+];
+
+// Determine step titles: use translation key if exists, else fallback
+function getStepTitle(step: any, tr: any) {
+  const key = `eq_step_${step.n}_title`;
+  if (tr[key]) return tr[key];
+  // Detect language by a known key
+  const isEN = tr.nav_about === 'About';
+  return isEN ? step.titleEN : step.titlePL;
+}
+
+const cards = [
+  { titleKey: 'eq_1_title', descKey: 'eq_1_desc', icon: 'tractor' },
+  { titleKey: 'eq_2_title', descKey: 'eq_2_desc', icon: 'factory' },
+  { titleKey: 'eq_3_title', descKey: 'eq_3_desc', icon: 'car' },
+  { titleKey: 'eq_4_title', descKey: 'eq_4_desc', icon: 'hard-hat' },
+];
+---
+
+<section id="equipment" class="py-20 lg:py-28 bg-bg-base">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+
+
+    <div data-reveal>
+      <SectionHeader
+        label={tr.equipment_label}
+        title={tr.equipment_title}
+        subtitle={tr.equipment_p1}
+        align="center"
+      />
+    </div>
+
+    <!-- 3-step process flow -->
+    <div class="grid md:grid-cols-3 gap-4 mb-16 relative" data-reveal>
+      {steps.map((step, idx) => (
+        <div class="flex flex-col items-center text-center relative px-4 py-8 md:py-0">
+
+          <!-- Connector line -->
+          {idx < steps.length - 1 && (
+            <div
+              class="hidden md:block absolute top-10 left-[55%] right-[-45%] h-px border-t-2 border-dashed"
+              style="border-color: var(--border-hover);"
+              aria-hidden="true"
+            ></div>
+          )}
+
+
+          <div
+            class="text-xs font-semibold tracking-widest uppercase mb-6 text-accent"
+          >
+            {tr.eq_step_label ?? (tr.nav_about === 'About' ? 'Step' : 'Krok')} {step.n}
+          </div>
+
+
+          <div
+            class="relative rounded-2xl border p-6 lg:p-8 bg-bg-card border-border"
+            style="box-shadow: var(--shadow-card);"
+          >
+            <i data-lucide={step.icon} class="w-6 h-6 text-accent"></i>
+          </div>
+
+
+            <h3
+              class="text-base font-bold my-4 text-text-primary"
+            >
+            {getStepTitle(step, tr)}
+          </h3>
+        </div>
+      ))}
+    </div>
+
+    <!-- Equipment categories -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-10 items-stretch">
+      {cards.map(({ titleKey, descKey, icon }, i) => (
+        <div data-reveal data-delay={`${i * 100}`} class="h-full">
+          <EquipmentCard
+            title={tr[titleKey]}
+            desc={tr[descKey]}
+            icon={icon}
+          />
+        </div>
+      ))}
+    </div>
+
+
+    <div class="flex justify-center" data-reveal>
+      <Button href="#contact" variant="primary">
+        {tr.equipment_cta}
+        <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
+      </Button>
+    </div>
+
+  </div>
+</section>

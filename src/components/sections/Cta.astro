@@ -1,0 +1,45 @@
+---
+import Button from "../ui/Button.astro";
+
+const { tr } = Astro.props;
+---
+
+<section class="relative py-20 overflow-hidden bg-bg-base">
+
+  <div
+    class="absolute inset-0 pointer-events-none"
+    style="background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 15%, transparent) 0%, transparent 60%);"
+    aria-hidden="true"
+  ></div>
+
+  <div
+    class="absolute inset-0 border-y pointer-events-none border-border"
+    aria-hidden="true"
+  ></div>
+
+  <div class="relative max-w-7xl mx-auto px-6 lg:px-12 text-center" data-reveal>
+    <h2
+      class="text-3xl md:text-4xl font-bold mb-4 text-text-primary"
+    >
+      {tr.cta_title}
+    </h2>
+    <p
+      class="text-lg mb-8 max-w-xl mx-auto text-text-secondary"
+    >
+      {tr.cta_desc}
+    </p>
+    <div class="flex flex-wrap justify-center gap-4">
+      <Button variant="primary" href="#contact">
+        {tr.cta_btn}
+        <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
+      </Button>
+      <a
+        href="mailto:info@migeola.com"
+        class="flex items-center gap-2 py-3 px-4 text-sm transition-colors text-text-secondary"
+      >
+        <i data-lucide="mail" class="w-4 h-4 shrink-0" aria-hidden="true"></i>
+        info@migeola.com
+      </a>
+    </div>
+  </div>
+</section>

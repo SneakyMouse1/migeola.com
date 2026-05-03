@@ -1,0 +1,86 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { t } from "../../i18n/translations";
+
+const lang = "en";
+const tr = t.en;
+---
+
+<Layout 
+  title="Terms of Use | Migeola" 
+  description="Terms of Use for the Migeola website." 
+  lang={lang} 
+  canonical="https://migeola.com/en/terms-of-use/"
+  plUrl="https://migeola.com/regulamin/"
+  enUrl="https://migeola.com/en/terms-of-use/"
+>
+  <Header lang={lang} tr={tr} />
+  
+  <main class="max-w-4xl mx-auto px-6 py-20">
+    <h1 class="text-3xl md:text-4xl font-bold mb-10 text-text-primary">Terms of Use</h1>
+    
+    <div class="space-y-8 text-text-primary">
+      <p>Legal basis: Act of 18 July 2002 on providing services by electronic means (Journal of Laws 2002 No. 144, item 1204).</p>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">1. General provisions</h2>
+        <ul class="list-disc pl-5 space-y-2">
+          <li>The owner of the website is JDG Migeola Artem Cherepanov, located at ul. Ostrobramska 101, 04-041 Warsaw, Poland.</li>
+          <li>The website is available at: <a href="https://migeola.com" class="text-accent hover:underline">https://migeola.com</a></li>
+          <li>The website is strictly informational. It is not an online store and does not facilitate concluding online contracts.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">2. Conditions of use</h2>
+        <ul class="list-disc pl-5 space-y-2">
+          <li>Using the website is free of charge.</li>
+          <li>The user is obliged to use the website in a manner consistent with applicable law, principles of social coexistence, and good manners.</li>
+          <li>It is forbidden to copy, modify, and distribute the content available on the website without prior written consent of the owner.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">3. Electronic services</h2>
+        <ul class="list-disc pl-5 space-y-2">
+          <li>The website provides an electronic service in the form of a contact form.</li>
+          <li>The agreement for the provision of electronic services is concluded for the duration of the use of the website and is terminated when the user leaves the website.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">4. Intellectual property</h2>
+        <p>All content, articles, logos, and graphics published on the website are the property of JDG Migeola Artem Cherepanov or cooperating entities. Their copying, reproduction, or use without explicit written consent is prohibited.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">5. Liability</h2>
+        <ul class="list-disc pl-5 space-y-2">
+          <li>The service provider is not liable for technical interruptions in the functioning of the website resulting from independent causes (e.g., server failures, force majeure).</li>
+          <li>The information presented on the website is of a general nature and does not constitute an offer within the meaning of the Polish Civil Code.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">6. Complaints</h2>
+        <ul class="list-disc pl-5 space-y-2">
+          <li>Any complaints regarding the functioning of the website should be sent to the email address: <a href="mailto:info@migeola.com" class="text-accent hover:underline">info@migeola.com</a>.</li>
+          <li>Complaints will be considered within 14 days from the date of their receipt.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">7. Final provisions</h2>
+        <ul class="list-disc pl-5 space-y-2">
+          <li>In matters not covered by these Terms, the relevant provisions of Polish law shall apply.</li>
+          <li>The competent court for resolving potential disputes is the common court competent for the seat of the Service Provider (Polish courts).</li>
+          <li>These Terms enter into force on April 23, 2026.</li>
+        </ul>
+      </section>
+    </div>
+  </main>
+  
+  <Footer lang={lang} tr={tr} />
+</Layout>

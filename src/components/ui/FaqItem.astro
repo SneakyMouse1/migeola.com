@@ -1,0 +1,35 @@
+---
+const { question, answer } = Astro.props;
+---
+
+<details
+  class="group border-b border-border"
+>
+  <summary
+    class="flex cursor-pointer items-center justify-between py-5 font-medium select-none list-none transition-colors text-text-secondary hover:text-text-primary"
+  >
+    <span class="flex-1 pr-4 text-sm md:text-base text-text-primary">
+      {question}
+    </span>
+    <span
+      class="ml-4 shrink-0 transition-transform duration-200 group-open:rotate-180 text-text-muted"
+      aria-hidden="true"
+    >
+      <i data-lucide="chevron-down" class="w-5 h-5"></i>
+    </span>
+  </summary>
+  <div class="pb-5 text-sm leading-relaxed text-text-secondary">
+    {answer}
+  </div>
+</details>
+
+<style>
+  /* Hide default marker in all browsers */
+  details > summary::-webkit-details-marker { display: none; }
+  details > summary::marker { display: none; content: ''; }
+
+  /* Hover state for summary */
+  details > summary:hover > :first-child {
+    color: var(--text-primary);
+  }
+</style>

@@ -1,0 +1,82 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { t } from "../i18n/translations";
+
+const lang = "pl";
+const tr = t.pl;
+---
+
+<Layout 
+  title="Polityka Cookies | Migeola" 
+  description="Polityka Cookies serwisu Migeola." 
+  lang={lang} 
+  canonical="https://migeola.com/polityka-cookies/"
+  plUrl="https://migeola.com/polityka-cookies/"
+  enUrl="https://migeola.com/en/cookie-policy/"
+>
+  <Header lang={lang} tr={tr} />
+  
+  <main class="max-w-4xl mx-auto px-6 py-20">
+    <h1 class="text-3xl md:text-4xl font-bold mb-10 text-text-primary">Polityka Cookies</h1>
+    
+    <div class="space-y-8 text-text-primary">
+      <p>Podstawa prawna: Art. 173 Prawa telekomunikacyjnego oraz RODO.</p>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">1. Czym są pliki cookies?</h2>
+        <p>Pliki cookies (tzw. „ciasteczka”) to niewielkie dane informatyczne, w szczególności pliki tekstowe, które przechowywane są w urządzeniu końcowym użytkownika serwisu i przeznaczone są do korzystania ze stron internetowych serwisu. Cookies zazwyczaj zawierają nazwę strony internetowej, z której pochodzą, czas przechowywania ich na urządzeniu końcowym oraz unikalny numer.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">2. Jakie cookies używamy?</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse mt-4">
+            <thead>
+              <tr class="border-b border-border">
+                <th class="py-3 px-4">Typ</th>
+                <th class="py-3 px-4">Nazwa</th>
+                <th class="py-3 px-4">Cel</th>
+                <th class="py-3 px-4">Okres</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b border-border">
+                <td class="py-3 px-4">Niezbędne</td>
+                <td class="py-3 px-4">cookiehub</td>
+                <td class="py-3 px-4">Przechowywanie preferencji dotyczących zgody na pliki cookies</td>
+                <td class="py-3 px-4">1 rok</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">3. Podstawa prawna</h2>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>Cookies niezbędne:</strong> art. 6 ust. 1 lit. f RODO (prawnie uzasadniony interes polegający na prawidłowym funkcjonowaniu serwisu).</li>
+          <li><strong>Pozostałe cookies:</strong> art. 6 ust. 1 lit. a RODO (zgoda użytkownika wyrażona poprzez baner).</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">4. Zarządzanie zgodą</h2>
+        <p>Zgoda na wykorzystanie opcjonalnych plików cookies jest wyrażana przez użytkownika za pośrednictwem narzędzia CookieHub. Użytkownik ma możliwość w dowolnym momencie zmienić swoje preferencje lub wycofać zgodę, korzystając z widgetu dostępnego na stronie.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">5. Jak wyłączyć cookies w przeglądarce?</h2>
+        <p>Możesz zablokować lub usunąć pliki cookies bezpośrednio w ustawieniach swojej przeglądarki internetowej. Szczegółowe instrukcje znajdują się na oficjalnych stronach wsparcia twórców przeglądarek (Chrome, Firefox, Safari, Edge, itd.).</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">6. Kontakt</h2>
+        <p>W przypadku pytań dotyczących naszej Polityki Cookies, prosimy o kontakt pod adresem: <a href="mailto:info@migeola.com" class="text-accent hover:underline">info@migeola.com</a>.</p>
+      </section>
+    </div>
+  </main>
+  
+  <Footer lang={lang} tr={tr} />
+</Layout>

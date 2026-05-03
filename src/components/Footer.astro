@@ -1,0 +1,125 @@
+---
+const { lang, tr } = Astro.props;
+
+const anchors = {
+  about: "#about",
+  equipment: "#equipment",
+  cases: "#cases",
+  contact: "#contact",
+};
+---
+
+<footer
+  id="footer"
+  class="pt-24 pb-12 border-t border-border bg-[#060b16]"
+>
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="grid md:grid-cols-3 gap-10 mb-10">
+      <div>
+        <a
+          href={lang === "pl" ? "/" : "/en"}
+          class="inline-flex items-center gap-3 mb-4"
+          aria-label="Migeola — powrót do strony głównej"
+        >
+          <img src="/migeola-light.png" alt="Migeola" class="w-32" />
+        </a>
+        <p
+          class="text-sm leading-relaxed max-w-sm text-text-muted"
+        >
+          {tr.footer_desc}
+        </p>
+      </div>
+
+      <div>
+        <div class="footer-stat-label">{tr.footer_nav}</div>
+        <div class="flex flex-col gap-3">
+          <a href={anchors.about} class="footer-link">{tr.nav_about}</a>
+          <a href={anchors.equipment} class="footer-link">{tr.nav_equipment}</a>
+          <a href={anchors.cases} class="footer-link">{tr.nav_cases}</a>
+          <a href={anchors.contact} class="footer-link">{tr.nav_contact}</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="footer-stat-label">
+          {lang === "pl" ? "Kontakt" : "Contact"}
+        </div>
+        <div class="flex flex-col gap-3">
+          <a
+            href="mailto:info@migeola.com"
+            class="footer-link flex items-center gap-2"
+          >
+            <i data-lucide="mail" class="w-4 h-4 shrink-0" aria-hidden="true"
+            ></i>
+            info@migeola.com
+          </a>
+          <a
+            href="tel:+48666557461"
+            class="footer-link flex items-center gap-2"
+          >
+            <i data-lucide="phone" class="w-4 h-4 shrink-0" aria-hidden="true"
+            ></i>
+            +48 666 557 461
+          </a>
+          <span class="footer-link flex items-center gap-2">
+            <i data-lucide="map-pin" class="w-4 h-4 shrink-0" aria-hidden="true"
+            ></i>
+            {lang === "pl" ? "Warszawa, Polska" : "Warsaw, Poland"}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="border-t pt-6 flex flex-wrap justify-between items-center gap-4 border-border"
+    >
+      <div class="flex flex-col gap-2">
+        <p class="text-xs text-text-muted">
+          {tr.footer_copy}
+        </p>
+        <div
+          class="flex flex-wrap gap-4 text-xs text-text-muted"
+        >
+          <a
+            href={lang === "pl"
+              ? "/polityka-prywatnosci"
+              : "/en/privacy-policy"}
+            class="hover:text-accent transition-colors"
+          >
+            {lang === "pl" ? "Polityka Prywatności" : "Privacy Policy"}
+          </a>
+          <a
+            href={lang === "pl" ? "/regulamin" : "/en/terms-of-use"}
+            class="hover:text-accent transition-colors"
+          >
+            {lang === "pl" ? "Regulamin" : "Terms of Use"}
+          </a>
+          <a
+            href={lang === "pl" ? "/polityka-cookies" : "/en/cookie-policy"}
+            class="hover:text-accent transition-colors"
+          >
+            {lang === "pl" ? "Polityka Cookies" : "Cookie Policy"}
+          </a>
+        </div>
+      </div>
+      <div class="flex gap-2 text-xs font-bold">
+        <a
+          href="/"
+          class:list={[
+            "px-2.5 py-1 border transition-colors rounded",
+            lang === "pl" ? "border-accent text-accent" : "border-border text-text-muted"
+          ]}
+          aria-label="Wersja polska">PL</a
+        >
+        <a
+          href="/en"
+          class:list={[
+            "px-2.5 py-1 border transition-colors rounded",
+            lang === "en" ? "border-accent text-accent" : "border-border text-text-muted"
+          ]}
+          aria-label="English version">EN</a
+        >
+      </div>
+    </div>
+  </div>
+</footer>

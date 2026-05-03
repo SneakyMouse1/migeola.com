@@ -1,0 +1,88 @@
+---
+import SectionHeader from "../ui/SectionHeader.astro";
+import CaseCard from "../ui/CaseCard.astro";
+
+const { tr } = Astro.props;
+
+// Flag mapping by route keywords
+const flagMap = {
+  Kanada: "🇨🇦",
+  Canada: "🇨🇦",
+  Litwa: "🇱🇹",
+  Lithuania: "🇱🇹",
+  Europa: "🇪🇺",
+  Europe: "🇪🇺",
+  Chiny: "🇨🇳",
+  China: "🇨🇳",
+  Azja: "🌏",
+  Asia: "🌏",
+  "Bliski Wschód": "🇦🇪",
+  "Middle East": "🇦🇪",
+  Kazachstan: "🇰🇿",
+  Kazakhstan: "🇰🇿",
+  "Azja Centralna": "🌏",
+  "Central Asia": "🌏",
+  "Europa Zach.": "🇩🇪",
+  "Western Europe": "🇩🇪",
+  "Europa Wsch.": "🇵🇱",
+  "Eastern Europe": "🇵🇱",
+  "East Europe": "🇵🇱",
+  Polska: "🇵🇱",
+  Poland: "🇵🇱",
+  Niemcy: "🇩🇪",
+  Germany: "🇩🇪",
+};
+
+function getFlag(name: string) {
+  for (const [key, flag] of Object.entries(flagMap)) {
+    if (name.includes(key)) return flag;
+  }
+  return "🌍";
+}
+
+// Parse route string "A → B" into from/to objects
+function parseRoute(route: string) {
+  const parts = route.split("→").map((s) => s.trim());
+  return { from: parts[0] ?? "", to: parts[1] ?? "" };
+}
+---
+
+<section
+  id="cases"
+  class="py-20 lg:py-28 bg-bg-surface"
+>
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div data-reveal>
+      <SectionHeader
+        label={tr.cases_label}
+        title={tr.cases_title}
+        align="center"
+      />
+    </div>
+
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {
+        tr.cases.map((c: any, i: number) => {
+          const { from, to } = parseRoute(c.route);
+          return (
+            <div data-reveal data-delay={`${Math.min((i % 3) * 100, 300)}`}>
+              <CaseCard
+                img={c.img}
+                from={from}
+                to={to}
+                fromFlag={getFlag(from)}
+                toFlag={getFlag(to)}
+                title={c.title}
+                count={c.volume}
+                transport={c.transport}
+                client={c.client}
+                duration={c.days}
+                desc={c.desc}
+              />
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>

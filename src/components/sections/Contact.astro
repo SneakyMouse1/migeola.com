@@ -1,0 +1,184 @@
+---
+import SectionHeader from "../ui/SectionHeader.astro";
+import Input from "../ui/Input.astro";
+import Textarea from "../ui/Textarea.astro";
+import Button from "../ui/Button.astro";
+
+const { lang, tr } = Astro.props;
+
+const trustItems = [
+  tr.contact_trust_1 ?? 'Odpowiedź w ciągu 24h',
+  tr.contact_trust_2 ?? 'Bezpłatna wycena',
+  tr.contact_trust_3 ?? 'Tylko klienci B2B',
+];
+---
+
+<section id="contact" class="py-20 lg:py-28 bg-bg-base">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12">
+    <div class="grid lg:grid-cols-[2fr_3fr] gap-16">
+
+      <!-- Left Column: Info & Trust -->
+      <div data-reveal>
+        <SectionHeader
+          label={tr.contact_label}
+          title={tr.contact_title}
+          align="left"
+          class="mb-8"
+        />
+        <p class="text-base leading-relaxed mb-8 text-text-secondary">
+          {tr.contact_desc}
+        </p>
+
+
+        <div class="flex flex-col gap-4 mb-8">
+          <a
+            href="tel:+48666557461"
+            class="flex items-center gap-3 transition-colors group text-text-secondary"
+          >
+            <div
+              class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 border bg-bg-card border-border"
+            >
+              <i data-lucide="phone" class="w-4 h-4 group-hover:scale-110 transition-transform text-accent" aria-hidden="true"></i>
+            </div>
+            <div>
+              <div class="text-xs uppercase tracking-widest font-semibold mb-0.5 text-text-muted">{tr.contact_phone}</div>
+              <div class="text-sm font-semibold text-text-primary">+48 666 557 461</div>
+            </div>
+          </a>
+
+          <a
+            href="mailto:info@migeola.com"
+            class="flex items-center gap-3 transition-colors group text-text-secondary"
+          >
+            <div
+              class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 border bg-bg-card border-border"
+            >
+              <i data-lucide="mail" class="w-4 h-4 group-hover:scale-110 transition-transform text-accent" aria-hidden="true"></i>
+            </div>
+            <div>
+              <div class="text-xs uppercase tracking-widest font-semibold mb-0.5 text-text-muted">{tr.contact_email}</div>
+              <div class="text-sm font-semibold text-text-primary">info@migeola.com</div>
+            </div>
+          </a>
+
+          <div class="flex items-center gap-3">
+            <div
+              class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 border bg-bg-card border-border"
+            >
+              <i data-lucide="map-pin" class="w-4 h-4 text-accent" aria-hidden="true"></i>
+            </div>
+            <div>
+              <div class="text-xs uppercase tracking-widest font-semibold mb-0.5 text-text-muted">{tr.contact_city}</div>
+              <div class="text-sm font-semibold text-text-primary">
+                {lang === "pl" ? "Warszawa, Polska" : "Warsaw, Poland"}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trust badges -->
+        <div class="flex flex-col gap-2">
+          {trustItems.map((item) => (
+            <div class="flex items-center gap-2 text-sm text-text-secondary">
+              <i data-lucide="check" class="w-4 h-4 shrink-0" style="color: #22c55e;" aria-hidden="true"></i>
+              {item}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Right Column: Contact Form -->
+      <form
+        id="contact-form"
+        class="flex flex-col gap-5"
+        data-reveal
+        data-delay="100"
+      >
+        <div class="grid grid-cols-2 gap-4">
+          <Input id="name" name="name" label={tr.form_name} required placeholder={tr.form_name_ph} />
+          <Input id="company" name="company" label={tr.form_company} placeholder={tr.form_company_ph} />
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <Input id="phone" name="phone" type="tel" label={tr.form_phone} required placeholder={tr.form_phone_ph} />
+          <Input id="email" name="email" type="email" label={tr.form_email} placeholder={tr.form_email_ph} />
+        </div>
+        <Input id="cargo" name="cargo" label={tr.form_cargo} placeholder={tr.form_cargo_ph} />
+        <Input id="route" name="route" label={tr.form_route} placeholder={tr.form_route_ph} />
+        <Textarea id="message" name="message" label={tr.form_message} placeholder={tr.form_message_ph} rows={4} />
+
+        <div>
+          <div class="cf-turnstile mb-4" data-sitekey="0x4AAAAAADIafUOFPqmf9_my" data-theme="light"></div>
+          <Button type="submit" variant="primary" class="w-full text-base py-4" id="submit-btn">
+            <span id="btn-text">{tr.form_submit}</span>
+            <i data-lucide="send" class="w-4 h-4 ml-1" id="btn-icon" aria-hidden="true"></i>
+          </Button>
+          <div id="form-status" class="mt-4 text-sm font-medium hidden"></div>
+          <p class="text-xs mt-3 text-text-muted">{tr.form_note}</p>
+        </div>
+      </form>
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
+<script is:inline define:vars={{ successMsg: tr.form_success, errorMsg: tr.form_error, sendingMsg: tr.form_sending, originalBtnText: tr.form_submit }}>
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
+  const submitBtn = document.getElementById('submit-btn');
+  const btnText = document.getElementById('btn-text');
+  const btnIcon = document.getElementById('btn-icon');
+
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      // Reset status
+      status.classList.remove('text-green-500', 'text-red-500', 'hidden');
+      status.textContent = sendingMsg;
+      status.classList.add('text-text-muted');
+      
+      // Disable button
+      submitBtn.disabled = true;
+      btnText.textContent = sendingMsg;
+      btnIcon.classList.add('animate-pulse');
+
+      const formData = new FormData(form);
+
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          body: formData,
+        });
+
+        if (response.ok) {
+          status.textContent = successMsg;
+          status.classList.remove('text-text-muted');
+          status.classList.add('text-green-500');
+          form.reset();
+        } else {
+          const data = await response.json();
+          status.textContent = data.message || errorMsg;
+          status.classList.remove('text-text-muted');
+          status.classList.add('text-red-500');
+        }
+      } catch (error) {
+        status.textContent = errorMsg;
+        status.classList.remove('text-text-muted');
+        status.classList.add('text-red-500');
+      } finally {
+        submitBtn.disabled = false;
+        btnText.textContent = originalBtnText;
+        btnIcon.classList.remove('animate-pulse');
+        
+        // Hide status after 5 seconds if success
+        if (status.classList.contains('text-green-500')) {
+          setTimeout(() => {
+            status.classList.add('hidden');
+          }, 5000);
+        }
+      }
+    });
+  }
+</script>
+
+    </div>
+  </div>
+</section>

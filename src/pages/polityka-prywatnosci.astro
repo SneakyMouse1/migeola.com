@@ -1,0 +1,89 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { t } from "../i18n/translations";
+
+const lang = "pl";
+const tr = t.pl;
+---
+
+<Layout 
+  title="Polityka Prywatności | Migeola" 
+  description="Polityka Prywatności serwisu Migeola." 
+  lang={lang} 
+  canonical="https://migeola.com/polityka-prywatnosci/"
+  plUrl="https://migeola.com/polityka-prywatnosci/"
+  enUrl="https://migeola.com/en/privacy-policy/"
+>
+  <Header lang={lang} tr={tr} />
+  
+  <main class="max-w-4xl mx-auto px-6 py-20">
+    <h1 class="text-3xl md:text-4xl font-bold mb-10 text-text-primary">Polityka Prywatności</h1>
+    
+    <div class="space-y-8 text-text-primary">
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">1. Administrator danych osobowych</h2>
+        <p>Administratorem danych osobowych jest <strong>JDG Migeola Artem Cherepanov</strong> z siedzibą pod adresem ul. Ostrobramska 101, 04-041 Warszawa, Polska.</p>
+        <p>Kontakt z Administratorem możliwy jest pod adresem email: <a href="mailto:info@migeola.com" class="text-accent hover:underline">info@migeola.com</a> lub numerem telefonu: +48 666 557 461.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">2. Jakie dane zbieramy</h2>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>Dane kontaktowe podane przez użytkownika w formularzu:</strong> imię, adres email, numer telefonu oraz treść wiadomości.</li>
+          <li><strong>Dane techniczne zbierane automatycznie:</strong> adres IP, typ przeglądarki, dane sesji — przetwarzane tylko za uprzednią zgodą użytkownika.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">3. Cel i podstawa prawna przetwarzania</h2>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>Odpowiedź na zapytania:</strong> art. 6 ust. 1 lit. b RODO (wykonanie umowy / działania przedumowne).</li>
+          <li><strong>Marketing:</strong> art. 6 ust. 1 lit. a RODO (zgoda).</li>
+          <li><strong>Obowiązki prawne:</strong> art. 6 ust. 1 lit. c RODO (np. wymogi podatkowe i księgowe).</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">4. Odbiorcy danych</h2>
+        <p>Dane mogą być przekazywane podmiotom przetwarzającym je na nasze zlecenie, np. dostawcom usług IT (hosting, poczta email) – wyłącznie na podstawie umów powierzenia przetwarzania danych osobowych. Ponadto, dane mogą być udostępniane organom publicznym, tylko gdy wymagają tego przepisy prawa.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">5. Przekazywanie danych do państw trzecich</h2>
+        <p>W przypadku przekazywania danych do państw poza Europejskim Obszarem Gospodarczym (EOG), stosujemy odpowiednie zabezpieczenia, takie jak standardowe klauzule umowne zatwierdzone przez Komisję Europejską.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">6. Okres przechowywania</h2>
+        <ul class="list-disc pl-5 space-y-2">
+          <li><strong>Zapytania ofertowe i kontaktowe:</strong> do 3 lat od ostatniego kontaktu.</li>
+          <li><strong>Dane księgowe:</strong> 5 lat od końca roku kalendarzowego (wymóg ustawy o rachunkowości).</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">7. Prawa użytkownika</h2>
+        <p>Każdy użytkownik ma prawo do:</p>
+        <ul class="list-disc pl-5 space-y-2 mb-3">
+          <li>Dostępu do swoich danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, przenoszenia oraz wniesienia sprzeciwu.</li>
+          <li>Cofnięcia zgody w dowolnym momencie (bez wpływu na zgodność z prawem przetwarzania przed cofnięciem).</li>
+        </ul>
+        <p>Użytkownikowi przysługuje również prawo wniesienia skargi do organu nadzorczego: Prezes Urzędu Ochrony Danych Osobowych (UODO), ul. Stawki 2, 00-193 Warszawa, <a href="https://uodo.gov.pl" target="_blank" rel="noopener noreferrer" class="text-accent hover:underline">uodo.gov.pl</a>.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">8. Pliki cookies</h2>
+        <p>Nasza strona wykorzystuje pliki cookies. Szczegółowe informacje znajdują się w <a href="/polityka-cookies" class="text-accent hover:underline">Polityce Cookies</a>.</p>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 text-text-primary">9. Zmiany polityki</h2>
+        <p>Zastrzegamy sobie prawo do aktualizacji niniejszej Polityki Prywatności. Ostatnia aktualizacja: 23 kwietnia 2026 r.</p>
+      </section>
+    </div>
+  </main>
+  
+  <Footer lang={lang} tr={tr} />
+</Layout>
