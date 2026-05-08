@@ -4,33 +4,39 @@ const { tr } = Astro.props;
 ---
 
 <section
-  class="relative min-h-[90vh] flex items-center py-20 lg:py-28 overflow-hidden bg-[#0a0f1e]"
+  class="relative min-h-[90vh] flex items-center py-20 lg:py-28 overflow-hidden"
 >
   <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
     <img
-      src="/hero.png"
+      src="/hero-dark.jpg"
       alt=""
-      class="w-full h-full object-cover"
+      class="hero-img hero-img--dark w-full h-full object-cover"
     />
-    <div class="absolute inset-0 bg-black/20"></div>
+    <img
+      src="/hero-light.jpg"
+      alt=""
+      class="hero-img hero-img--light w-full h-full object-cover"
+    />
+    <div class="absolute inset-0 hero-overlay"></div>
   </div>
 
   <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full">
     <div class="max-w-2xl" data-reveal>
-      <h1 class="text-5xl md:text-6xl font-bold leading-tight mb-6 text-white">
+      <h1 class="hero-title text-5xl md:text-6xl font-bold leading-tight mb-6">
         {tr.hero_title_1}<br />
         <span class="text-accent">{tr.hero_title_2}</span>
       </h1>
-      
-      <p class="text-xl text-slate-300 mb-10 max-w-lg">
+
+      <p class="hero-desc text-xl mb-10 max-w-lg">
         {tr.hero_desc}
       </p>
 
       <div class="flex flex-wrap gap-4">
         <Button href="#contact" variant="primary">
-          {tr.hero_cta} <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+          {tr.hero_cta}
+          <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
         </Button>
-        <Button href="#cases" variant="ghost" class="text-white border-white/20 hover:bg-white/10 hover:border-white/30">
+        <Button href="#cases" variant="ghost" class="hero-ghost-btn">
           {tr.hero_cases}
         </Button>
       </div>

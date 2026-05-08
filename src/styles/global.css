@@ -286,24 +286,70 @@ main {
 }
 
 /* ─────────────────────────────────────────
-   MAP PULSE ANIMATION
+   HERO — THEME SWITCHING
    ───────────────────────────────────────── */
-@keyframes pulse-dot {
 
-  0%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-
-  50% {
-    opacity: 0.5;
-    transform: scale(1.6);
-  }
+/* Images */
+.hero-img--dark {
+  display: block;
 }
 
-.pulse-dot {
-  animation: pulse-dot 2s ease-in-out infinite;
+.hero-img--light {
+  display: none;
+}
+
+[data-theme="light"] .hero-img--dark {
+  display: none;
+}
+
+[data-theme="light"] .hero-img--light {
+  display: block;
+}
+
+.hero-overlay {
+  background: rgba(0, 0, 0, 0.25);
+}
+
+[data-theme="light"] .hero-overlay {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Text */
+.hero-title {
+  color: #ffffff;
+}
+
+.hero-desc {
+  color: #cbd5e1;
+}
+
+[data-theme="light"] .hero-title {
+  color: #0f172a;
+}
+
+[data-theme="light"] .hero-desc {
+  color: #475569;
+}
+
+/* Ghost button */
+.hero-ghost-btn {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.hero-ghost-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+[data-theme="light"] .hero-ghost-btn {
+  color: #0f172a;
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+[data-theme="light"] .hero-ghost-btn:hover {
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.25);
 }
 
 /* ─────────────────────────────────────────
