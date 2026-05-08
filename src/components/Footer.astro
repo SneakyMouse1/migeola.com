@@ -31,23 +31,23 @@ const anchors = {
       </div>
 
       <div>
-        <div class="footer-stat-label">{tr.footer_nav}</div>
+        <div class="text-xs font-bold text-accent uppercase tracking-label mb-5">{tr.footer_nav}</div>
         <div class="flex flex-col gap-3">
-          <a href={anchors.about} class="footer-link">{tr.nav_about}</a>
-          <a href={anchors.equipment} class="footer-link">{tr.nav_equipment}</a>
-          <a href={anchors.cases} class="footer-link">{tr.nav_cases}</a>
-          <a href={anchors.contact} class="footer-link">{tr.nav_contact}</a>
+          <a href={anchors.about} class="text-text-secondary text-sm font-medium transition-colors duration-200 hover:text-text-primary">{tr.nav_about}</a>
+          <a href={anchors.equipment} class="text-text-secondary text-sm font-medium transition-colors duration-200 hover:text-text-primary">{tr.nav_equipment}</a>
+          <a href={anchors.cases} class="text-text-secondary text-sm font-medium transition-colors duration-200 hover:text-text-primary">{tr.nav_cases}</a>
+          <a href={anchors.contact} class="text-text-secondary text-sm font-medium transition-colors duration-200 hover:text-text-primary">{tr.nav_contact}</a>
         </div>
       </div>
 
       <div>
-        <div class="footer-stat-label">
+        <div class="text-xs font-bold text-accent uppercase tracking-label mb-5">
           {lang === "pl" ? "Kontakt" : "Contact"}
         </div>
         <div class="flex flex-col gap-3">
           <a
             href="mailto:info@migeola.com"
-            class="footer-link flex items-center gap-2"
+            class="text-text-secondary text-sm font-medium transition-colors duration-200 hover:text-text-primary flex items-center gap-2"
           >
             <i data-lucide="mail" class="w-4 h-4 shrink-0" aria-hidden="true"
             ></i>
@@ -55,13 +55,13 @@ const anchors = {
           </a>
           <a
             href="tel:+48666557461"
-            class="footer-link flex items-center gap-2"
+            class="text-text-secondary text-sm font-medium transition-colors duration-200 hover:text-text-primary flex items-center gap-2"
           >
             <i data-lucide="phone" class="w-4 h-4 shrink-0" aria-hidden="true"
             ></i>
             +48 666 557 461
           </a>
-          <span class="footer-link flex items-center gap-2">
+          <span class="text-text-secondary text-sm font-medium flex items-center gap-2">
             <i data-lucide="map-pin" class="w-4 h-4 shrink-0" aria-hidden="true"
             ></i>
             {lang === "pl" ? "Warszawa, Polska" : "Warsaw, Poland"}
