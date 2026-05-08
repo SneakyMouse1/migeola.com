@@ -1,6 +1,7 @@
 ---
 import SectionHeader from "../ui/SectionHeader.astro";
 import CaseCard from "../ui/CaseCard.astro";
+import { caseImages } from "../../i18n/cases";
 
 const { tr } = Astro.props;
 
@@ -47,10 +48,7 @@ function parseRoute(route: string) {
 }
 ---
 
-<section
-  id="cases"
-  class="py-20 lg:py-28 bg-bg-surface"
->
+<section id="cases" class="py-20 lg:py-28 bg-bg-surface">
   <div class="max-w-7xl mx-auto px-6 lg:px-12">
     <div data-reveal>
       <SectionHeader
@@ -67,7 +65,7 @@ function parseRoute(route: string) {
           return (
             <div data-reveal data-delay={`${Math.min((i % 3) * 100, 300)}`}>
               <CaseCard
-                img={c.img}
+                img={c.img ?? caseImages[i]}
                 from={from}
                 to={to}
                 fromFlag={getFlag(from)}
