@@ -1,33 +1,49 @@
 ---
 const { tr } = Astro.props;
 
-const items = [
-  { icon: 'check-circle', key: 'strip_stat_1' },
-  { icon: 'globe',        key: 'strip_stat_2' },
-  { icon: 'building-2',   key: 'strip_stat_3' },
-  { icon: 'user-check',   key: 'strip_stat_4' },
+const stats = [
+  {
+    icon: 'folder-check',
+    value: tr.strip_stat_1_val ?? '47+',
+    label: tr.strip_stat_1_lbl ?? tr.strip_stat_1 ?? 'Zrealizowanych projektów',
+  },
+  {
+    icon: 'globe',
+    value: tr.strip_stat_2_val ?? '4',
+    label: tr.strip_stat_2_lbl ?? tr.strip_stat_2 ?? 'Kontynenty operacji',
+  },
+  {
+    icon: 'building-2',
+    value: tr.strip_stat_3_val ?? 'B2B',
+    label: tr.strip_stat_3_lbl ?? tr.strip_stat_3 ?? 'Dedykowana obsługa firm',
+  },
+  {
+    icon: 'user-check',
+    value: tr.strip_stat_4_val ?? '1',
+    label: tr.strip_stat_4_lbl ?? tr.strip_stat_4 ?? 'Punkt kontaktu door-to-door',
+  },
 ];
 ---
 
-<section class="bg-bg-surface border-y border-border py-4">
+<section class="relative z-20 bg-bg-surface/80 border-y border-border backdrop-blur-md py-6 lg:py-8">
   <div class="max-w-7xl mx-auto px-6 lg:px-12">
-    <div class="flex flex-wrap justify-center gap-x-10 gap-y-3">
-      <span class="flex items-center gap-2 text-sm text-text-secondary">
-        <i data-lucide="check-circle" class="w-4 h-4 shrink-0 text-accent" aria-hidden="true"></i>
-        {tr.strip_stat_1}
-      </span>
-      <span class="flex items-center gap-2 text-sm text-text-secondary">
-        <i data-lucide="globe" class="w-4 h-4 shrink-0 text-accent" aria-hidden="true"></i>
-        {tr.strip_stat_2}
-      </span>
-      <span class="flex items-center gap-2 text-sm text-text-secondary">
-        <i data-lucide="building-2" class="w-4 h-4 shrink-0 text-accent" aria-hidden="true"></i>
-        {tr.strip_stat_3}
-      </span>
-      <span class="flex items-center gap-2 text-sm text-text-secondary">
-        <i data-lucide="user-check" class="w-4 h-4 shrink-0 text-accent" aria-hidden="true"></i>
-        {tr.strip_stat_4}
-      </span>
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+      {stats.map((stat) => (
+        <div class="flex items-center gap-3.5 p-4 rounded-xl bg-bg-card/40 border border-border/60 hover:border-accent/30 transition-all duration-300 group">
+          <div class="w-11 h-11 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center shrink-0 text-accent group-hover:scale-105 transition-transform">
+            <i data-lucide={stat.icon} class="w-5 h-5" aria-hidden="true"></i>
+          </div>
+          <div class="min-w-0">
+            <div class="text-2xl lg:text-3xl font-extrabold text-text-primary tracking-tight leading-none mb-1">
+              {stat.value}
+            </div>
+            <div class="text-xs font-medium text-text-secondary leading-snug truncate">
+              {stat.label}
+            </div>
+          </div>
+        </div>
+      ))}
     </div>
   </div>
 </section>
+

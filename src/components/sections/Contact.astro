@@ -6,10 +6,19 @@ import Button from "../ui/Button.astro";
 
 const { lang, tr } = Astro.props;
 
-const trustItems = [
-  tr.contact_trust_1 ?? 'Odpowiedź w ciągu 24h',
-  tr.contact_trust_2 ?? 'Bezpłatna wycena',
-  tr.contact_trust_3 ?? 'Tylko klienci B2B',
+const trustBadges = [
+  {
+    icon: 'clock',
+    label: tr.contact_trust_1 ?? 'Odpowiedź w ciągu 24h',
+  },
+  {
+    icon: 'calculator',
+    label: tr.contact_trust_2 ?? 'Bezpłatna wycena',
+  },
+  {
+    icon: 'shield-check',
+    label: tr.contact_trust_3 ?? 'Tylko klienci B2B',
+  },
 ];
 ---
 
@@ -77,11 +86,13 @@ const trustItems = [
         </div>
 
         <!-- Trust badges -->
-        <div class="flex flex-col gap-2">
-          {trustItems.map((item) => (
-            <div class="flex items-center gap-2 text-sm text-text-secondary">
-              <i data-lucide="check" class="w-4 h-4 shrink-0" style="color: #22c55e;" aria-hidden="true"></i>
-              {item}
+        <div class="mt-6 pt-6 border-t border-border flex flex-col gap-3">
+          {trustBadges.map((badge) => (
+            <div class="flex items-center gap-3 p-2.5 px-3.5 rounded-xl bg-bg-card/40 border border-border/60 hover:border-accent/30 transition-colors">
+              <div class="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 text-accent flex items-center justify-center shrink-0">
+                <i data-lucide={badge.icon} class="w-4 h-4" aria-hidden="true"></i>
+              </div>
+              <span class="text-sm font-semibold text-text-primary">{badge.label}</span>
             </div>
           ))}
         </div>

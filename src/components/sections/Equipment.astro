@@ -57,38 +57,39 @@ const cards = [
     </div>
 
     <!-- 3-step process flow -->
-    <div class="grid md:grid-cols-3 gap-4 mb-16 relative" data-reveal>
-      {steps.map((step, idx) => (
-        <div class="flex flex-col items-center text-center relative px-4 py-8 md:py-0">
+    <div class="relative grid md:grid-cols-3 gap-8 md:gap-4 mb-16" data-reveal>
+      <!-- Mobile vertical connector line (centered down steps) -->
+      <div 
+        class="md:hidden absolute left-1/2 -translate-x-1/2 top-10 bottom-10 w-0 border-l-2 border-dashed border-border/60 z-0 pointer-events-none"
+        aria-hidden="true"
+      ></div>
 
-          <!-- Connector line -->
+      {steps.map((step, idx) => (
+        <div class="flex flex-col items-center text-center relative px-4 z-10">
+
+          <!-- Desktop horizontal connector line (centered through icons) -->
           {idx < steps.length - 1 && (
             <div
-              class="hidden md:block absolute top-10 left-[55%] right-[-45%] h-px border-t-2 border-dashed"
-              style="border-color: var(--border-hover);"
+              class="hidden md:block absolute top-[74px] lg:top-[82px] left-[50%] w-full h-0 border-t-2 border-dashed border-border/60 z-0 pointer-events-none"
               aria-hidden="true"
             ></div>
           )}
 
-
           <div
-            class="text-xs font-semibold tracking-widest uppercase mb-6 text-accent"
+            class="text-xs font-semibold tracking-widest uppercase mb-4 text-accent px-3 py-1 rounded-full bg-accent/10 border border-accent/20 relative z-10 bg-bg-base"
           >
             {tr.eq_step_label ?? (tr.nav_about === 'About' ? 'Step' : 'Krok')} {step.n}
           </div>
 
-
           <div
-            class="relative rounded-2xl border p-6 lg:p-8 bg-bg-card border-border"
-            style="box-shadow: var(--shadow-card);"
+            class="relative z-10 rounded-2xl border p-6 lg:p-8 bg-bg-card border-border shadow-md hover:border-accent/40 transition-colors"
           >
             <i data-lucide={step.icon} class="w-6 h-6 text-accent"></i>
           </div>
 
-
-            <h3
-              class="text-base font-bold my-4 text-text-primary"
-            >
+          <h3
+            class="text-base font-bold my-4 text-text-primary relative z-10 bg-bg-base px-2"
+          >
             {getStepTitle(step, tr)}
           </h3>
         </div>

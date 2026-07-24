@@ -36,6 +36,14 @@ export const t = {
     strip_4: 'Obsługa door-to-door',
 
     // Strip stats (trust bar)
+    strip_stat_1_val: '47+',
+    strip_stat_1_lbl: 'Zrealizowanych projektów',
+    strip_stat_2_val: '4',
+    strip_stat_2_lbl: 'Kontynenty operacji',
+    strip_stat_3_val: 'B2B',
+    strip_stat_3_lbl: 'Dedykowana obsługa firm',
+    strip_stat_4_val: '1',
+    strip_stat_4_lbl: 'Punkt kontaktu door-to-door',
     strip_stat_1: '47+ zrealizowanych projektów',
     strip_stat_2: '4 kontynenty',
     strip_stat_3: 'Tylko klienci B2B',
@@ -284,6 +292,14 @@ export const t = {
     strip_4: 'Door-to-door delivery',
 
     // Strip stats (trust bar)
+    strip_stat_1_val: '47+',
+    strip_stat_1_lbl: 'Projects delivered',
+    strip_stat_2_val: '4',
+    strip_stat_2_lbl: 'Continents covered',
+    strip_stat_3_val: 'B2B',
+    strip_stat_3_lbl: 'Dedicated business service',
+    strip_stat_4_val: '1',
+    strip_stat_4_lbl: 'Point of contact door-to-door',
     strip_stat_1: '47+ projects delivered',
     strip_stat_2: '4 continents',
     strip_stat_3: 'B2B clients only',
