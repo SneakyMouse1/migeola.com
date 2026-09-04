@@ -1,21 +1,25 @@
-// src/scripts/reveal.js
+let currentObserver = null;
 
-/**
- * Init reveal animation on scroll
- * for all elements with data-reveal attribute.
- */
 export function initReveal() {
-  const observer = new IntersectionObserver(
+  if (currentObserver) {
+    currentObserver.disconnect();
+    currentObserver = null;
+  }
+
+  const elements = document.querySelectorAll('[data-reveal]');
+  if (elements.length === 0) return;
+
+  currentObserver = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
+          currentObserver?.unobserve(entry.target);
         }
       });
     },
-    { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    { threshold: 0.08, rootMargin: '0px 0px -30px 0px' }
   );
 
-  document.querySelectorAll('[data-reveal]').forEach((el) => observer.observe(el));
+  elements.forEach((el) => currentObserver?.observe(el));
 }

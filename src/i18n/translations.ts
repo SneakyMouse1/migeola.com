@@ -1,5 +1,3 @@
-// src/i18n/translations.ts
-
 export const languages = ['pl', 'en'];
 
 export const defaultLang = 'pl';
@@ -220,9 +218,10 @@ export const t = {
     ],
 
     // CTA band
-    cta_title: 'Gotowy do wysyłki?',
-    cta_desc: 'Wyślij zapytanie, a przygotujemy dopasowane rozwiązanie logistyczne.',
-    cta_btn: 'Wyślij zapytanie',
+    cta_badge: '// SZYBKA KALKULACJA TRASY',
+    cta_title: 'Potrzebujesz dokładnej stawki frachtowej lub audytu sprzętu?',
+    cta_desc: 'Prześlij specyfikację ładunku lub kryteria zakupu. Otrzymaj certyfikowaną propozycję handlową w mniej niż 24 godziny.',
+    cta_btn: 'Skalkuluj trasę dostawy',
 
     // Contact
     contact_label: 'Kontakt',
@@ -476,9 +475,10 @@ export const t = {
     ],
 
     // CTA band
-    cta_title: 'Ready to ship?',
-    cta_desc: 'Send us your request and we will prepare a tailored logistics solution.',
-    cta_btn: 'Send a request',
+    cta_badge: '// RAPID ROUTE DISPATCH',
+    cta_title: 'Need an accurate freight rate or equipment audit right now?',
+    cta_desc: 'Submit your cargo specifications or sourcing criteria. Receive a certified commercial proposal in less than 24 hours.',
+    cta_btn: 'Calculate Transit Route',
 
     // Contact
     contact_label: 'Contact',

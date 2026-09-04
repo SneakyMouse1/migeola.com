@@ -2,10 +2,38 @@
 import Button from "./ui/Button.astro";
 import { Sun, Moon } from "@lucide/astro";
 
-const { lang, tr } = Astro.props;
+const { lang, tr, plUrl, enUrl } = Astro.props;
 
-const switchTo =
-  lang === "pl" ? { label: "EN", href: "/en" } : { label: "PL", href: "/" };
+const currentPath = Astro.url.pathname.replace(/\/$/, "");
+
+// 1:1 route map between Polish and English subpages
+const routeMapPLtoEN: Record<string, string> = {
+  "": "/en",
+  "/polityka-prywatnosci": "/en/privacy-policy",
+  "/regulamin": "/en/terms-of-use",
+  "/polityka-cookies": "/en/cookie-policy",
+};
+
+const routeMapENtoPL: Record<string, string> = {
+  "/en": "/",
+  "/en/privacy-policy": "/polityka-prywatnosci",
+  "/en/terms-of-use": "/regulamin",
+  "/en/cookie-policy": "/polityka-cookies",
+};
+
+let plHref = "/";
+let enHref = "/en";
+
+if (plUrl && enUrl) {
+  plHref = plUrl.replace("https://migeola.com", "") || "/";
+  enHref = enUrl.replace("https://migeola.com", "") || "/en";
+} else if (lang === "pl") {
+  plHref = currentPath || "/";
+  enHref = routeMapPLtoEN[currentPath] ?? "/en";
+} else {
+  enHref = currentPath || "/en";
+  plHref = routeMapENtoPL[currentPath] ?? "/";
+}
 
 const anchors = {
   about: "#about",
@@ -14,8 +42,8 @@ const anchors = {
   contact: "#contact",
 };
 
-const iconBtnClass =
-  "w-10 h-10 flex items-center justify-center rounded-lg border border-border text-text-secondary hover:text-text-primary hover:border-border-hover hover:bg-bg-card/50 transition-all duration-200 cursor-pointer text-sm font-bold select-none bg-transparent";
+const themeToggleClass =
+  "w-10 h-10 flex items-center justify-center rounded-xl border border-border bg-bg-surface/80 hover:bg-bg-card hover:border-border-hover transition-all duration-200 cursor-pointer select-none";
 ---
 
 <header
@@ -36,44 +64,88 @@ const iconBtnClass =
       </div>
 
       <div class="hidden lg:flex items-center gap-3">
-        <a
-          href={switchTo.href}
-          class={iconBtnClass}
-          aria-label={`Switch to ${switchTo.label}`}
-        >
-          {switchTo.label}
-        </a>
+        <!-- Segmented Language Switcher -->
+        <div class="inline-flex items-center p-1 rounded-xl border border-border bg-bg-surface/80 select-none">
+          <a
+            href={plHref}
+            data-astro-prefetch="load"
+            class={`lang-switch-btn px-2.5 py-1 text-xs font-mono-tech font-bold rounded-lg transition-all duration-200 ${
+              lang === "pl"
+                ? "bg-bg-card text-text-primary shadow-sm border border-border/80 pointer-events-none cursor-default"
+                : "text-text-muted hover:text-text-primary cursor-pointer"
+            }`}
+            aria-label="Język polski"
+          >
+            PL
+          </a>
+          <a
+            href={enHref}
+            data-astro-prefetch="load"
+            class={`lang-switch-btn px-2.5 py-1 text-xs font-mono-tech font-bold rounded-lg transition-all duration-200 ${
+              lang === "en"
+                ? "bg-bg-card text-text-primary shadow-sm border border-border/80 pointer-events-none cursor-default"
+                : "text-text-muted hover:text-text-primary cursor-pointer"
+            }`}
+            aria-label="English language"
+          >
+            EN
+          </a>
+        </div>
 
+        <!-- Tinted Theme Switcher -->
         <button
           id="theme-toggle"
           aria-label="Toggle theme"
-          class={iconBtnClass}
+          class={themeToggleClass}
         >
-          <Moon class="w-4 h-4 icon-moon pointer-events-none" />
-          <Sun class="w-4 h-4 icon-sun pointer-events-none" />
+          <Moon class="w-4 h-4 icon-moon pointer-events-none stroke-[2]" />
+          <Sun class="w-4 h-4 icon-sun pointer-events-none stroke-[2]" />
         </button>
 
-        <Button href={anchors.contact} variant="primary" class="w-44">
-          {tr.nav_cta}
+        <!-- CTA Button with Arrow -->
+        <Button href={anchors.contact} variant="primary" class="px-5 py-2.5 rounded-xl group flex items-center justify-center gap-1.5 shadow-md shadow-accent/20">
+          <span>{tr.nav_cta}</span>
+          <span class="inline-block transition-transform duration-200 group-hover:translate-x-1 font-bold">→</span>
         </Button>
       </div>
 
-      <div class="flex items-center gap-3 lg:hidden">
-        <a
-          href={switchTo.href}
-          class={iconBtnClass}
-          aria-label={`Switch to ${switchTo.label}`}
-        >
-          {switchTo.label}
-        </a>
+      <div class="flex items-center gap-2.5 lg:hidden">
+        <!-- Mobile Segmented Language Switcher -->
+        <div class="inline-flex items-center p-0.5 rounded-xl border border-border bg-bg-surface/80 select-none">
+          <a
+            href={plHref}
+            data-astro-prefetch="load"
+            class={`lang-switch-btn px-2 py-1 text-xs font-mono-tech font-bold rounded-lg transition-all duration-200 ${
+              lang === "pl"
+                ? "bg-bg-card text-text-primary shadow-sm border border-border/80 pointer-events-none cursor-default"
+                : "text-text-muted hover:text-text-primary cursor-pointer"
+            }`}
+            aria-label="Język polski"
+          >
+            PL
+          </a>
+          <a
+            href={enHref}
+            data-astro-prefetch="load"
+            class={`lang-switch-btn px-2 py-1 text-xs font-mono-tech font-bold rounded-lg transition-all duration-200 ${
+              lang === "en"
+                ? "bg-bg-card text-text-primary shadow-sm border border-border/80 pointer-events-none cursor-default"
+                : "text-text-muted hover:text-text-primary cursor-pointer"
+            }`}
+            aria-label="English language"
+          >
+            EN
+          </a>
+        </div>
 
+        <!-- Mobile Tinted Theme Switcher -->
         <button
           id="theme-toggle-mobile"
           aria-label="Toggle theme"
-          class={iconBtnClass}
+          class={themeToggleClass}
         >
-          <Moon class="w-4 h-4 icon-moon pointer-events-none" />
-          <Sun class="w-4 h-4 icon-sun pointer-events-none" />
+          <Moon class="w-4 h-4 icon-moon pointer-events-none stroke-[2]" />
+          <Sun class="w-4 h-4 icon-sun pointer-events-none stroke-[2]" />
         </button>
 
         <label
@@ -100,8 +172,9 @@ const iconBtnClass =
         <a href={anchors.cases} class="text-text-secondary text-base font-medium py-2 border-b border-border transition-colors duration-200 hover:text-text-primary">{tr.nav_cases}</a>
         <a href={anchors.contact} class="text-text-secondary text-base font-medium py-2 border-b border-border transition-colors duration-200 hover:text-text-primary">{tr.nav_contact}</a>
         <div class="pt-2">
-          <Button href={anchors.contact} variant="primary" class="w-full">
-            {tr.nav_cta}
+          <Button href={anchors.contact} variant="primary" class="w-full flex items-center justify-center gap-1.5 group">
+            <span>{tr.nav_cta}</span>
+            <span class="inline-block transition-transform duration-200 group-hover:translate-x-1 font-bold">→</span>
           </Button>
         </div>
       </div>
@@ -112,9 +185,13 @@ const iconBtnClass =
 <style>
   .icon-moon {
     display: block;
+    color: #60a5fa;
+    filter: drop-shadow(0 0 6px rgba(96, 165, 250, 0.45));
   }
   .icon-sun {
     display: none;
+    color: #f59e0b;
+    filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.45));
   }
 
   :global([data-theme="light"]) .icon-moon {
@@ -129,49 +206,17 @@ const iconBtnClass =
   :global([data-theme="dark"]) .icon-sun {
     display: none;
   }
-
 </style>
 
-<script is:inline>
-  const theme = (() => {
-    if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-      return localStorage.getItem("theme");
-    }
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-      return "dark";
-    }
-    return "light";
-  })();
+<script>
+  import { initThemeToggle } from "../scripts/theme.js";
+  import { initNavigation } from "../scripts/navigation.js";
 
-  if (theme === "light") {
-    document.documentElement.classList.remove("dark");
-    document.documentElement.setAttribute("data-theme", "light");
-  } else {
-    document.documentElement.classList.add("dark");
-    document.documentElement.setAttribute("data-theme", "dark");
+  function setupHeader() {
+    initThemeToggle();
+    initNavigation();
   }
 
-  window.localStorage.setItem("theme", theme);
-
-  const handleToggleClick = () => {
-    const element = document.documentElement;
-    element.classList.toggle("dark");
-
-    const isDark = element.classList.contains("dark");
-    element.setAttribute("data-theme", isDark ? "dark" : "light");
-    localStorage.setItem("theme", isDark ? "dark" : "light");
-  };
-
-  document
-    .querySelectorAll("#theme-toggle, #theme-toggle-mobile")
-    .forEach((btn) => {
-      btn.addEventListener("click", handleToggleClick);
-    });
-
-  const menuToggle = document.getElementById("menu-toggle");
-  document.querySelectorAll("#mobile-menu a").forEach((link) => {
-    link.addEventListener("click", () => {
-      if (menuToggle) menuToggle.checked = false;
-    });
-  });
+  setupHeader();
+  document.addEventListener("astro:page-load", setupHeader);
 </script>

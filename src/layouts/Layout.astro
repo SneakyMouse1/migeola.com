@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import "flag-icons/css/flag-icons.min.css";
+import { ClientRouter } from "astro:transitions";
 
 const {
   title,
@@ -19,13 +20,13 @@ const enUrl = Astro.props.enUrl ?? "https://migeola.com/en/";
 <!doctype html>
 <html lang={lang}>
   <head>
-    <!-- Anti-flash -->
+    <ClientRouter />
+
+    <!-- Anti-flash: Synchronous theme application before initial paint -->
     <script is:inline>
-      (function () {
+      (function() {
         const stored = localStorage.getItem("theme");
-        const system = window.matchMedia("(prefers-color-scheme: dark)").matches
-          ? "dark"
-          : "light";
+        const system = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
         const theme = stored ?? system;
         document.documentElement.setAttribute("data-theme", theme);
         if (theme === "dark") {
@@ -46,8 +47,18 @@ const enUrl = Astro.props.enUrl ?? "https://migeola.com/en/";
     <link rel="manifest" href="/site.webmanifest" />
 
     <!-- AI / LLM Context -->
-    <link rel="alternate" type="text/markdown" href="/llms.txt" title="LLMs.txt" />
-    <link rel="alternate" type="text/markdown" href="/llms-full.txt" title="LLMs-full.txt" />
+    <link
+      rel="alternate"
+      type="text/markdown"
+      href="/llms.txt"
+      title="LLMs.txt"
+    />
+    <link
+      rel="alternate"
+      type="text/markdown"
+      href="/llms-full.txt"
+      title="LLMs-full.txt"
+    />
 
     <!-- Canonical -->
     <link rel="canonical" href={canonical} />
@@ -132,41 +143,25 @@ const enUrl = Astro.props.enUrl ?? "https://migeola.com/en/";
     <!-- Lucide Icons CDN -->
     <script src="https://unpkg.com/lucide@latest" defer></script>
 
-    <!-- Reveal on scroll -->
-    <script is:inline>
-      function initReveal() {
-        var observer = new IntersectionObserver(
-          function (entries) {
-            entries.forEach(function (entry) {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("is-visible");
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          { threshold: 0.08, rootMargin: "0px 0px -30px 0px" },
-        );
+    <!-- Core client logic (bundled & optimized by Vite) -->
+    <script>
+      import { initReveal } from "../scripts/reveal.js";
+      import { initIcons } from "../scripts/icons.js";
+      import { restoreScrollPosition } from "../scripts/navigation.js";
+      import { applyTheme } from "../scripts/theme.js";
 
-        document.querySelectorAll("[data-reveal]").forEach(function (el) {
-          observer.observe(el);
-        });
-      }
-
-      function initLucide() {
-        if (typeof lucide !== "undefined") {
-          lucide.createIcons();
-        }
-      }
-
-      if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", function () {
-          initReveal();
-        });
-      } else {
+      function onPageLoad() {
         initReveal();
+        initIcons();
+        restoreScrollPosition();
       }
 
-      window.addEventListener("load", initLucide);
+      onPageLoad();
+      document.addEventListener("astro:page-load", onPageLoad);
+      document.addEventListener("astro:after-swap", () => {
+        applyTheme();
+        restoreScrollPosition();
+      });
     </script>
 
     <!-- CookieHub -->

@@ -134,32 +134,9 @@ const filterTabs = isEN
   </div>
 </section>
 
-<script is:inline>
-  document.addEventListener("DOMContentLoaded", () => {
-    const filterBtns = document.querySelectorAll(".case-filter-btn");
-    const caseCards = document.querySelectorAll(".case-card-wrapper");
+<script>
+  import { initCaseFilters } from "../../scripts/cases.js";
 
-    filterBtns.forEach((btn) => {
-      btn.addEventListener("click", () => {
-        const filter = btn.getAttribute("data-filter");
-
-        filterBtns.forEach((b) => {
-          b.classList.remove("active", "bg-accent/15", "border-accent/40", "text-accent");
-          b.classList.add("bg-bg-card/40", "border-border", "text-text-secondary");
-        });
-
-        btn.classList.add("active", "bg-accent/15", "border-accent/40", "text-accent");
-        btn.classList.remove("bg-bg-card/40", "border-border", "text-text-secondary");
-
-        caseCards.forEach((card) => {
-          const cats = (card.getAttribute("data-categories") || "").split(" ");
-          if (filter === "all" || cats.includes(filter)) {
-            card.style.display = "";
-          } else {
-            card.style.display = "none";
-          }
-        });
-      });
-    });
-  });
+  initCaseFilters();
+  document.addEventListener("astro:page-load", initCaseFilters);
 </script>
