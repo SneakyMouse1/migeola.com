@@ -1,6 +1,5 @@
 ---
 import SectionHeader from "../ui/SectionHeader.astro";
-import ServiceCard from "../ui/ServiceCard.astro";
 
 const { tr } = Astro.props;
 ---
@@ -11,38 +10,151 @@ const { tr } = Astro.props;
       <SectionHeader
         label={tr.services_label}
         title={tr.services_title}
+        subtitle={tr.about_p2}
         align="center"
       />
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
-      <div data-reveal data-delay="100" class="h-full">
-        <ServiceCard
-          title={tr.svc_1_title}
-          items={tr.svc_1_items}
-          icon="truck"
-        />
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+      <!-- Spedycja Międzynarodowa -->
+      <div class="lg:col-span-7 card p-7 lg:p-9 flex flex-col justify-between" data-reveal data-delay="100">
+        <div>
+          <div class="flex items-center justify-between gap-3 mb-5">
+            <span class="badge-tech badge-tech--accent">
+              FRACHT & SPEDYCJA
+            </span>
+            <span class="text-xs font-mono-tech text-text-muted">CORE SERVICE</span>
+          </div>
+
+          <h3 class="text-2xl font-bold mb-3 text-text-primary">
+            {tr.svc_1_title}
+          </h3>
+
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="badge-tech">FTL / LTL</span>
+            <span class="badge-tech">MULTIMODAL</span>
+            <span class="badge-tech">DOOR-TO-DOOR</span>
+            <span class="badge-tech">SEA & AIR</span>
+          </div>
+
+          <p class="text-sm leading-relaxed text-text-secondary mb-6">
+            Kompleksowa organizacja łańcucha dostaw drogowych, morskich, lotniczych i kolejowych na terenie Europy, Azji i Ameryki z indywidualnym doborem trasy.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-5 border-t border-border/80">
+          {tr.svc_1_items.map((item: string) => (
+            <div class="flex items-center gap-2 text-sm text-text-secondary">
+              <span class="text-accent font-bold text-xs">→</span>
+              <span>{item}</span>
+            </div>
+          ))}
+        </div>
       </div>
-      <div data-reveal data-delay="200" class="h-full">
-        <ServiceCard
-          title={tr.svc_2_title}
-          items={tr.svc_2_items}
-          icon="package-open"
-        />
+
+      <!-- Ładunki Projektowe & OOG -->
+      <div class="lg:col-span-5 card p-7 lg:p-9 flex flex-col justify-between" data-reveal data-delay="200">
+        <div>
+          <div class="flex items-center justify-between gap-3 mb-5">
+            <span class="badge-tech badge-tech--amber">
+              OVERSIZED & HEAVY
+            </span>
+            <span class="text-xs font-mono-tech text-text-muted">PROJECT CARGO</span>
+          </div>
+
+          <h3 class="text-2xl font-bold mb-3 text-text-primary">
+            {tr.svc_2_title}
+          </h3>
+
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="badge-tech">OOG</span>
+            <span class="badge-tech">HEAVY HAUL</span>
+            <span class="badge-tech">PILOT SERVICE</span>
+          </div>
+
+          <p class="text-sm leading-relaxed text-text-secondary mb-6">
+            Transport specjalistyczny maszyn budowlanych, linii technologicznych i urządzeń przemysłowych wymagających pozwoleń i pilotażu.
+          </p>
+        </div>
+
+        <ul class="flex flex-col gap-2 pt-5 border-t border-border/80">
+          {tr.svc_2_items.map((item: string) => (
+            <li class="flex items-center gap-2 text-sm text-text-secondary">
+              <span class="text-accent-amber font-bold text-xs">■</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
       </div>
-      <div data-reveal data-delay="300" class="h-full">
-        <ServiceCard
-          title={tr.svc_3_title}
-          items={tr.svc_3_items}
-          icon="search"
-        />
+
+      <!-- Sourcing Sprzętu -->
+      <div class="lg:col-span-5 card p-7 lg:p-9 flex flex-col justify-between" data-reveal data-delay="300">
+        <div>
+          <div class="flex items-center justify-between gap-3 mb-5">
+            <span class="badge-tech badge-tech--accent">
+              PROCUREMENT
+            </span>
+            <span class="text-xs font-mono-tech text-text-muted">GLOBAL SOURCING</span>
+          </div>
+
+          <h3 class="text-2xl font-bold mb-3 text-text-primary">
+            {tr.svc_3_title}
+          </h3>
+
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="badge-tech">B2B PURCHASE</span>
+            <span class="badge-tech">INSPECTION</span>
+            <span class="badge-tech">DIRECT CONTRACTS</span>
+          </div>
+
+          <p class="text-sm leading-relaxed text-text-secondary mb-6">
+            Bezpośrednie wyszukiwanie i zakup maszyn oraz pojazdów z weryfikacją stanu technicznego i pełnym zabezpieчением transakcji.
+          </p>
+        </div>
+
+        <ul class="flex flex-col gap-2 pt-5 border-t border-border/80">
+          {tr.svc_3_items.map((item: string) => (
+            <li class="flex items-center gap-2 text-sm text-text-secondary">
+              <span class="text-accent font-bold text-xs">→</span>
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
       </div>
-      <div data-reveal data-delay="400" class="h-full">
-        <ServiceCard
-          title={tr.svc_4_title}
-          items={tr.svc_4_items}
-          icon="shield-check"
-        />
+
+      <!-- Obsługa Kompleksowa & Cło -->
+      <div class="lg:col-span-7 card p-7 lg:p-9 flex flex-col justify-between" data-reveal data-delay="400">
+        <div>
+          <div class="flex items-center justify-between gap-3 mb-5">
+            <span class="badge-tech">
+              CUSTOMS & COMPLIANCE
+            </span>
+            <span class="text-xs font-mono-tech text-text-muted">FULL-CYCLE</span>
+          </div>
+
+          <h3 class="text-2xl font-bold mb-3 text-text-primary">
+            {tr.svc_4_title}
+          </h3>
+
+          <div class="flex flex-wrap gap-2 mb-6">
+            <span class="badge-tech">ODPRAWA CELNA</span>
+            <span class="badge-tech">DOKUMENTACJA EX-1 / T1</span>
+            <span class="badge-tech">CZĘŚCI ZAMIENNE</span>
+          </div>
+
+          <p class="text-sm leading-relaxed text-text-secondary mb-6">
+            Bezpieczeństwo prawne i celne. Przygotowanie dokumentacji spedycyjnej, taryfikacja celna, odprawy tranzytowe oraz regularne dostawy części zamiennych.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-5 border-t border-border/80">
+          {tr.svc_4_items.map((item: string) => (
+            <div class="flex items-center gap-2 text-sm text-text-secondary">
+              <span class="text-accent font-bold text-xs">→</span>
+              <span>{item}</span>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   </div>

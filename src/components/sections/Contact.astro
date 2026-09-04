@@ -5,29 +5,14 @@ import Textarea from "../ui/Textarea.astro";
 import Button from "../ui/Button.astro";
 
 const { lang, tr } = Astro.props;
-
-const trustBadges = [
-  {
-    icon: 'clock',
-    label: tr.contact_trust_1 ?? 'Odpowiedź w ciągu 24h',
-  },
-  {
-    icon: 'calculator',
-    label: tr.contact_trust_2 ?? 'Bezpłatna wycena',
-  },
-  {
-    icon: 'shield-check',
-    label: tr.contact_trust_3 ?? 'Tylko klienci B2B',
-  },
-];
 ---
 
 <section id="contact" class="py-20 lg:py-28 bg-bg-base">
   <div class="max-w-7xl mx-auto px-6 lg:px-12">
-    <div class="grid lg:grid-cols-[2fr_3fr] gap-16">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
 
-      <!-- Left Column: Info & Trust -->
-      <div data-reveal>
+      <!-- Left Column: Info & Dispatch Protocol -->
+      <div class="lg:col-span-5" data-reveal>
         <SectionHeader
           label={tr.contact_label}
           title={tr.contact_title}
@@ -38,78 +23,114 @@ const trustBadges = [
           {tr.contact_desc}
         </p>
 
-
-        <div class="flex flex-col gap-4 mb-8">
+        <div class="p-6 rounded-xl border border-border/80 bg-bg-card/40 space-y-4 mb-6">
           <a
             href="tel:+48666557461"
-            class="flex items-center gap-3 transition-colors group text-text-secondary"
+            class="flex items-center gap-3.5 transition-colors group text-text-secondary hover:text-text-primary"
           >
             <div
-              class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 border bg-bg-card border-border"
+              class="w-9 h-9 rounded-md flex items-center justify-center shrink-0 border bg-bg-surface border-border text-accent group-hover:border-accent/40 transition-colors"
             >
-              <i data-lucide="phone" class="w-4 h-4 group-hover:scale-110 transition-transform text-accent" aria-hidden="true"></i>
+              <i data-lucide="phone" class="w-4 h-4" aria-hidden="true"></i>
             </div>
             <div>
-              <div class="text-xs uppercase tracking-widest font-semibold mb-0.5 text-text-muted">{tr.contact_phone}</div>
-              <div class="text-sm font-semibold text-text-primary">+48 666 557 461</div>
+              <div class="text-xs uppercase font-mono-tech tracking-wider text-text-muted">{tr.contact_phone}</div>
+              <div class="text-sm font-bold text-text-primary font-mono-tech">+48 666 557 461</div>
             </div>
           </a>
 
           <a
             href="mailto:info@migeola.com"
-            class="flex items-center gap-3 transition-colors group text-text-secondary"
+            class="flex items-center gap-3.5 transition-colors group text-text-secondary hover:text-text-primary"
           >
             <div
-              class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 border bg-bg-card border-border"
+              class="w-9 h-9 rounded-md flex items-center justify-center shrink-0 border bg-bg-surface border-border text-accent group-hover:border-accent/40 transition-colors"
             >
-              <i data-lucide="mail" class="w-4 h-4 group-hover:scale-110 transition-transform text-accent" aria-hidden="true"></i>
+              <i data-lucide="mail" class="w-4 h-4" aria-hidden="true"></i>
             </div>
             <div>
-              <div class="text-xs uppercase tracking-widest font-semibold mb-0.5 text-text-muted">{tr.contact_email}</div>
-              <div class="text-sm font-semibold text-text-primary">info@migeola.com</div>
+              <div class="text-xs uppercase font-mono-tech tracking-wider text-text-muted">{tr.contact_email}</div>
+              <div class="text-sm font-bold text-text-primary font-mono-tech">info@migeola.com</div>
             </div>
           </a>
 
-          <div class="flex items-center gap-3">
+          <div class="flex items-center gap-3.5">
             <div
-              class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 border bg-bg-card border-border"
+              class="w-9 h-9 rounded-md flex items-center justify-center shrink-0 border bg-bg-surface border-border text-accent"
             >
-              <i data-lucide="map-pin" class="w-4 h-4 text-accent" aria-hidden="true"></i>
+              <i data-lucide="map-pin" class="w-4 h-4" aria-hidden="true"></i>
             </div>
             <div>
-              <div class="text-xs uppercase tracking-widest font-semibold mb-0.5 text-text-muted">{tr.contact_city}</div>
-              <div class="text-sm font-semibold text-text-primary">
+              <div class="text-xs uppercase font-mono-tech tracking-wider text-text-muted">{tr.contact_city}</div>
+              <div class="text-sm font-bold text-text-primary">
                 {lang === "pl" ? "Warszawa, Polska" : "Warsaw, Poland"}
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Trust badges -->
-        <div class="mt-6 pt-6 border-t border-border flex flex-col gap-3">
-          {trustBadges.map((badge) => (
-            <div class="flex items-center gap-3 p-2.5 px-3.5 rounded-xl bg-bg-card/40 border border-border/60 hover:border-accent/30 transition-colors">
-              <div class="w-8 h-8 rounded-lg bg-accent/10 border border-accent/20 text-accent flex items-center justify-center shrink-0">
-                <i data-lucide={badge.icon} class="w-4 h-4" aria-hidden="true"></i>
-              </div>
-              <span class="text-sm font-semibold text-text-primary">{badge.label}</span>
-            </div>
-          ))}
+        <div class="p-5 rounded-xl border border-border/80 bg-bg-surface/50 space-y-3 font-mono-tech text-xs">
+          <div class="flex items-center justify-between text-accent font-semibold tracking-wider uppercase text-xs pb-1">
+            <span>// {lang === "pl" ? "STANDARDY OBSŁUGI" : "DISPATCH PROTOCOL"}</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-accent/60"></span>
+          </div>
+
+          <div class="flex items-center justify-between text-text-secondary pb-2.5 border-b border-border/50">
+            <span class="text-text-muted">{lang === "pl" ? "CZAS REAKCJI:" : "RESPONSE TIME:"}</span>
+            <span class="text-text-primary font-semibold">&lt; 24h</span>
+          </div>
+
+          <div class="flex items-center justify-between text-text-secondary pb-2.5 border-b border-border/50">
+            <span class="text-text-muted">{lang === "pl" ? "KALKULACJA:" : "QUOTE ESTIMATE:"}</span>
+            <span class="text-text-primary font-semibold">{lang === "pl" ? "Bezpłatna & niewiążąca" : "Free & non-binding"}</span>
+          </div>
+
+          <div class="flex items-center justify-between text-text-secondary">
+            <span class="text-text-muted">{lang === "pl" ? "KLIENTELA:" : "CLIENT BASE:"}</span>
+            <span class="text-accent font-semibold">{lang === "pl" ? "Dedykowana obsługa B2B" : "Dedicated B2B only"}</span>
+          </div>
         </div>
       </div>
 
       <!-- Right Column: Contact Form -->
       <form
         id="contact-form"
-        class="flex flex-col gap-5"
+        class="lg:col-span-7 flex flex-col gap-5 p-7 lg:p-9 rounded-2xl border border-border/80 bg-bg-card/40 shadow-sm"
         data-reveal
         data-delay="100"
       >
-        <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-xs font-semibold uppercase tracking-wider text-text-muted mb-2.5 font-mono-tech">
+            {lang === "pl" ? "Typ zlecenia / Usługa" : "Inquiry Type / Service"}
+          </label>
+          <div class="flex flex-wrap gap-2">
+            {[
+              { id: 'freight', label: lang === 'pl' ? 'Spedycja & Fracht' : 'Freight Forwarding' },
+              { id: 'oog', label: lang === 'pl' ? 'Ładunki ponadgabarytowe (OOG)' : 'Oversized Cargo' },
+              { id: 'sourcing', label: lang === 'pl' ? 'Sourcing maszyn' : 'Equipment Sourcing' },
+              { id: 'parts', label: lang === 'pl' ? 'Części zamienne' : 'Spare Parts' },
+            ].map((opt, idx) => (
+              <label class="cursor-pointer">
+                <input 
+                  type="radio" 
+                  name="service_type" 
+                  value={opt.label} 
+                  class="peer sr-only" 
+                  checked={idx === 0} 
+                />
+                <span class="inline-flex items-center px-3 py-1.5 rounded-md text-xs font-mono-tech font-medium border border-border bg-bg-surface text-text-secondary peer-checked:border-accent peer-checked:bg-accent/15 peer-checked:text-accent transition-all">
+                  {opt.label}
+                </span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Input id="name" name="name" label={tr.form_name} required placeholder={tr.form_name_ph} />
           <Input id="company" name="company" label={tr.form_company} placeholder={tr.form_company_ph} />
         </div>
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Input id="phone" name="phone" type="tel" label={tr.form_phone} required placeholder={tr.form_phone_ph} />
           <Input id="email" name="email" type="email" label={tr.form_email} placeholder={tr.form_email_ph} />
         </div>

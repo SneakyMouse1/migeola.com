@@ -1,37 +1,80 @@
 ---
 import SectionHeader from "../ui/SectionHeader.astro";
-import WhyCard from "../ui/WhyCard.astro";
 
 const { tr } = Astro.props;
-
-const icons = [
-  "git-merge",
-  "package-search",
-  "workflow",
-  "network",
-  "shuffle",
-  "user-check",
-];
 ---
 
-<section class="py-20 lg:py-28 bg-bg-base">
+<section class="py-20 lg:py-28 bg-bg-surface border-y border-border/60">
   <div class="max-w-7xl mx-auto px-6 lg:px-12">
-    <div data-reveal>
-      <SectionHeader label={tr.why_label} title={tr.why_title} align="center" />
-    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+      
+      <!-- Left Column: Guarantees -->
+      <div class="lg:col-span-5" data-reveal>
+        <SectionHeader 
+          label={tr.why_label} 
+          title={tr.why_title} 
+          align="left"
+          class="mb-6"
+        />
+        
+        <p class="text-base lg:text-lg leading-relaxed text-text-secondary mb-8">
+          Przewóz maszyn i ładunków projektowych nie wybacza błędów. Eliminujemy ryzyko opóźnień, braków w dokumentacji i nieprzewidzianych kosztów przestoju w portach.
+        </p>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-      {
-        tr.why_items.map((item: any, i: number) => (
-          <div data-reveal data-delay={`${(i % 3) * 100}`}>
-            <WhyCard
-              title={item.title}
-              desc={item.desc}
-              icon={icons[i] ?? "check-circle"}
-            />
+        <div class="p-6 rounded-xl border border-border/80 bg-bg-card/60 space-y-4">
+          <div class="flex items-center gap-2 text-xs font-mono-tech text-accent uppercase tracking-wider font-semibold">
+            <span>// GWARANCJE OPERACYJNE</span>
           </div>
-        ))
-      }
+          
+          <div class="space-y-3 text-sm text-text-secondary">
+            <div class="flex items-start gap-3">
+              <span class="text-accent font-bold mt-0.5">✓</span>
+              <div>
+                <strong class="text-text-primary block font-medium">Ubezpieczenie Cargo & CMR</strong>
+                Pełne zabezpieczenie finansowe ładunków wysokiej wartości.
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-accent font-bold mt-0.5">✓</span>
+              <div>
+                <strong class="text-text-primary block font-medium">Zweryfikowana sieć przewoźników</strong>
+                Tylko sprawdzeni partnerzy z certyfikacją i monitoringiem GPS.
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <span class="text-accent font-bold mt-0.5">✓</span>
+              <div>
+                <strong class="text-text-primary block font-medium">Brak ukrytych kosztów</strong>
+                Przejrzysta kalkulacja stawek frachtowych i opłat portowych.
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Standards List -->
+      <div class="lg:col-span-7" data-reveal data-delay="150">
+        <div class="divide-y divide-border/80 border border-border/80 rounded-xl bg-bg-card/40 overflow-hidden shadow-sm">
+          {
+            tr.why_items.map((item: any, i: number) => (
+              <div class="p-6 lg:p-7 flex items-start gap-5 hover:bg-bg-card/70 transition-colors group">
+                <div class="w-7 h-7 rounded-md bg-accent/10 border border-accent/25 flex items-center justify-center shrink-0 mt-0.5 text-accent group-hover:bg-accent group-hover:text-white transition-colors">
+                  <i data-lucide="check" class="w-4 h-4" aria-hidden="true" />
+                </div>
+                <div class="min-w-0 flex-1">
+                  <h3 class="text-base lg:text-lg font-bold text-text-primary mb-1.5 group-hover:text-accent transition-colors">
+                    {item.title}
+                  </h3>
+                  <p class="text-sm leading-relaxed text-text-secondary">
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+
     </div>
   </div>
 </section>

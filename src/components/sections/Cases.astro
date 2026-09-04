@@ -3,49 +3,72 @@ import SectionHeader from "../ui/SectionHeader.astro";
 import CaseCard from "../ui/CaseCard.astro";
 import { caseImages } from "../../i18n/cases";
 
-const { tr } = Astro.props;
+const { tr, lang = "pl" } = Astro.props;
+const isEN = lang === "en" || tr.nav_about === "About";
 
-// Flag mapping by route keywords
-const flagMap = {
-  Kanada: "🇨🇦",
-  Canada: "🇨🇦",
-  Litwa: "🇱🇹",
-  Lithuania: "🇱🇹",
-  Europa: "🇪🇺",
-  Europe: "🇪🇺",
-  Chiny: "🇨🇳",
-  China: "🇨🇳",
-  Azja: "🌏",
-  Asia: "🌏",
-  "Bliski Wschód": "🇦🇪",
-  "Middle East": "🇦🇪",
-  Kazachstan: "🇰🇿",
-  Kazakhstan: "🇰🇿",
-  "Azja Centralna": "🌏",
-  "Central Asia": "🌏",
-  "Europa Zach.": "🇩🇪",
-  "Western Europe": "🇩🇪",
-  "Europa Wsch.": "🇵🇱",
-  "Eastern Europe": "🇵🇱",
-  "East Europe": "🇵🇱",
-  Polska: "🇵🇱",
-  Poland: "🇵🇱",
-  Niemcy: "🇩🇪",
-  Germany: "🇩🇪",
+const flagCodeMap: Record<string, string> = {
+  Kanada: "ca",
+  Canada: "ca",
+  Litwa: "lt",
+  Lithuania: "lt",
+  Europa: "eu",
+  Europe: "eu",
+  "Europa Zach.": "de",
+  "Western Europe": "de",
+  "Europa Wsch.": "pl",
+  "Eastern Europe": "pl",
+  "East Europe": "pl",
+  Chiny: "cn",
+  China: "cn",
+  Azja: "cn",
+  Asia: "cn",
+  "Bliski Wschód": "ae",
+  "Middle East": "ae",
+  Kazachstan: "kz",
+  Kazakhstan: "kz",
+  "Azja Centralna": "kz",
+  "Central Asia": "kz",
+  Polska: "pl",
+  Poland: "pl",
+  Niemcy: "de",
+  Germany: "de",
 };
 
-function getFlag(name: string) {
-  for (const [key, flag] of Object.entries(flagMap)) {
-    if (name.includes(key)) return flag;
+function getFlagCode(name: string): string {
+  for (const [key, code] of Object.entries(flagCodeMap)) {
+    if (name.includes(key)) return code;
   }
-  return "🌍";
+  return "eu";
 }
 
-// Parse route string "A → B" into from/to objects
 function parseRoute(route: string) {
   const parts = route.split("→").map((s) => s.trim());
   return { from: parts[0] ?? "", to: parts[1] ?? "" };
 }
+
+const caseCategoryMap: string[] = [
+  "multimodal morski",
+  "multimodal morski",
+  "morski",
+  "multimodal morski",
+  "drogowy",
+  "drogowy",
+  "multimodal morski drogowy",
+];
+
+const filterTabs = isEN
+  ? [
+      { id: "all", label: "ALL PROJECTS" },
+      { id: "multimodal", label: "MULTIMODAL" },
+      { id: "drogowy", label: "ROAD & HEAVY (OOG)" },
+      { id: "morski", label: "OCEAN & SEA FREIGHT" },
+    ]
+  : [
+      { id: "all", label: "WSZYSTKIE PROJEKTY" },
+      { id: "multimodal", label: "MULTIMODALNE" },
+      { id: "drogowy", label: "DROGOWE & OOG" },
+      { id: "morski", label: "FRACHT MORSKI" },
+    ];
 ---
 
 <section id="cases" class="py-20 lg:py-28 bg-bg-surface">
@@ -58,18 +81,44 @@ function parseRoute(route: string) {
       />
     </div>
 
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+    <!-- Category Filter Tabs -->
+    <div class="flex flex-wrap justify-center gap-2 mb-12" data-reveal>
+      {
+        filterTabs.map((tab, idx) => (
+          <button
+            type="button"
+            class={`case-filter-btn px-4 py-2 text-xs font-mono-tech font-semibold rounded-md border cursor-pointer transition-all ${
+              idx === 0
+                ? "active border-accent/40 bg-accent/15 text-accent"
+                : "border-border bg-bg-card/40 text-text-secondary hover:text-text-primary hover:border-border-hover"
+            }`}
+            data-filter={tab.id}
+          >
+            {tab.label}
+          </button>
+        ))
+      }
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5" id="cases-grid">
       {
         tr.cases.map((c: any, i: number) => {
           const { from, to } = parseRoute(c.route);
+          const categories = caseCategoryMap[i] ?? "drogowy";
           return (
-            <div data-reveal data-delay={`${Math.min((i % 3) * 100, 300)}`}>
+            <div
+              class="case-card-wrapper"
+              data-categories={categories}
+              data-reveal
+              data-delay={`${Math.min((i % 3) * 100, 300)}`}
+            >
               <CaseCard
                 img={c.img ?? caseImages[i]}
                 from={from}
                 to={to}
-                fromFlag={getFlag(from)}
-                toFlag={getFlag(to)}
+                fromCode={getFlagCode(from)}
+                toCode={getFlagCode(to)}
                 title={c.title}
                 count={c.volume}
                 transport={c.transport}
@@ -84,3 +133,33 @@ function parseRoute(route: string) {
     </div>
   </div>
 </section>
+
+<script is:inline>
+  document.addEventListener("DOMContentLoaded", () => {
+    const filterBtns = document.querySelectorAll(".case-filter-btn");
+    const caseCards = document.querySelectorAll(".case-card-wrapper");
+
+    filterBtns.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const filter = btn.getAttribute("data-filter");
+
+        filterBtns.forEach((b) => {
+          b.classList.remove("active", "bg-accent/15", "border-accent/40", "text-accent");
+          b.classList.add("bg-bg-card/40", "border-border", "text-text-secondary");
+        });
+
+        btn.classList.add("active", "bg-accent/15", "border-accent/40", "text-accent");
+        btn.classList.remove("bg-bg-card/40", "border-border", "text-text-secondary");
+
+        caseCards.forEach((card) => {
+          const cats = (card.getAttribute("data-categories") || "").split(" ");
+          if (filter === "all" || cats.includes(filter)) {
+            card.style.display = "";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      });
+    });
+  });
+</script>

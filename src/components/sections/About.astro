@@ -10,13 +10,14 @@ const stats = [
   { value: '100%', label: tr.about_stat_3 ?? 'Klienci B2B' },
   { value: '24h', label: tr.about_stat_4 ?? 'Czas odpowiedzi' },
 ];
+const isEN = tr.nav_about === 'About';
 ---
 
 <section id="about" class="py-20 lg:py-28 bg-bg-surface">
   <div class="max-w-7xl mx-auto px-6 lg:px-12">
     <div class="grid lg:grid-cols-2 gap-16 items-center">
 
-      <!-- Left Column: Text content -->
+      <!-- Left Column: About Overview -->
       <div data-reveal>
         <SectionHeader
           label={tr.about_label}
@@ -40,23 +41,52 @@ const stats = [
         </Button>
       </div>
 
-      <!-- Right Column: 2x2 Statistics Grid -->
-      <div class="grid grid-cols-2 gap-4" data-reveal data-delay="200">
-        {stats.map((stat) => (
-          <div
-            class="card p-6 flex flex-col"
-          >
-            <div
-              class="text-3xl lg:text-4xl font-bold mb-1 text-accent"
-              style="font-family: 'Sora', sans-serif;"
-            >
-              {stat.value}
-            </div>
-            <div class="text-sm mt-1 text-text-secondary">
-              {stat.label}
-            </div>
+      <!-- Right Column: Operational Dossier -->
+      <div class="card p-7 lg:p-9 bg-bg-card/70 border-border/80 shadow-md" data-reveal data-delay="150">
+        <div class="flex items-center justify-between pb-4 mb-6 border-b border-border/80">
+          <span class="font-mono-tech text-xs font-semibold text-accent uppercase tracking-wider">
+            // {isEN ? "OPERATIONAL DOSSIER" : "DOSSIER OPERACYJNE"}
+          </span>
+          <span class="badge-tech">VERIFIED B2B</span>
+        </div>
+
+        <div class="space-y-4 text-sm font-sans">
+          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 pb-3 border-b border-border/50">
+            <span class="text-xs font-mono-tech uppercase text-text-muted">{isEN ? "Location & Hub" : "Lokalizacja & Hub"}</span>
+            <span class="font-semibold text-text-primary">{isEN ? "Warsaw, Poland (Hub PL/EU)" : "Warszawa, Polska (Hub PL/EU)"}</span>
           </div>
-        ))}
+
+          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 pb-3 border-b border-border/50">
+            <span class="text-xs font-mono-tech uppercase text-text-muted">{isEN ? "Geographic Reach" : "Zasięg geograficzny"}</span>
+            <span class="font-medium text-text-primary text-right">{isEN ? "Europe, Asia, Middle East, Americas" : "Europa, Azja, Bliski Wschód, Ameryka"}</span>
+          </div>
+
+          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 pb-3 border-b border-border/50">
+            <span class="text-xs font-mono-tech uppercase text-text-muted">{isEN ? "Cargo Specialization" : "Specjalizacja ładunkowa"}</span>
+            <span class="font-medium text-text-primary text-right">{isEN ? "Industrial machinery, OOG, plant lines" : "Maszyny przemysłowe, OOG, linie prod."}</span>
+          </div>
+
+          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1 pb-3 border-b border-border/50">
+            <span class="text-xs font-mono-tech uppercase text-text-muted">{isEN ? "Customs Clearance" : "Obsługa celna"}</span>
+            <span class="font-medium text-text-primary">{isEN ? "EX-1, T1 procedures, transit & import" : "Procedury EX-1, T1, tranzyt & import"}</span>
+          </div>
+
+          <div class="flex flex-col sm:flex-row sm:items-baseline justify-between gap-1">
+            <span class="text-xs font-mono-tech uppercase text-text-muted">{isEN ? "Cooperation Model" : "Model współpracy"}</span>
+            <span class="font-semibold text-accent">{isEN ? "Dedicated door-to-door manager" : "Dedykowany spedytor door-to-door"}</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 mt-6 pt-5 border-t border-border/80">
+          <div class="p-3 rounded-lg bg-bg-surface/70 border border-border/60">
+            <div class="font-mono-tech text-xl font-bold text-accent">24h</div>
+            <div class="text-xs text-text-secondary mt-0.5">{isEN ? "Initial route estimate" : "Wstępna wycena trasy"}</div>
+          </div>
+          <div class="p-3 rounded-lg bg-bg-surface/70 border border-border/60">
+            <div class="font-mono-tech text-xl font-bold text-text-primary">100%</div>
+            <div class="text-xs text-text-secondary mt-0.5">{isEN ? "B2B & Industrial focus" : "Segment B2B & Przemysł"}</div>
+          </div>
+        </div>
       </div>
 
     </div>

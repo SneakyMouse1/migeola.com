@@ -15,7 +15,7 @@ const anchors = {
 };
 
 const iconBtnClass =
-  "icon-btn w-10 h-10 flex items-center justify-center rounded-lg border transition-all duration-200 cursor-pointer text-sm font-bold select-none bg-transparent";
+  "w-10 h-10 flex items-center justify-center rounded-lg border border-border text-text-secondary hover:text-text-primary hover:border-border-hover hover:bg-bg-card/50 transition-all duration-200 cursor-pointer text-sm font-bold select-none bg-transparent";
 ---
 
 <header
@@ -53,7 +53,7 @@ const iconBtnClass =
           <Sun class="w-4 h-4 icon-sun pointer-events-none" />
         </button>
 
-        <Button href={anchors.contact} variant="primary" class="w-[180px]">
+        <Button href={anchors.contact} variant="primary" class="w-44">
           {tr.nav_cta}
         </Button>
       </div>
@@ -81,9 +81,9 @@ const iconBtnClass =
           class="cursor-pointer p-2 -mr-2"
           aria-label="Menu"
         >
-          <span class="block w-[22px] h-0.5 bg-text-primary my-[5px] transition-colors duration-200"></span>
-          <span class="block w-[22px] h-0.5 bg-text-primary my-[5px] transition-colors duration-200"></span>
-          <span class="block w-[22px] h-0.5 bg-text-primary my-[5px] transition-colors duration-200"></span>
+          <span class="block w-6 h-0.5 bg-text-primary my-1 transition-colors duration-200"></span>
+          <span class="block w-6 h-0.5 bg-text-primary my-1 transition-colors duration-200"></span>
+          <span class="block w-6 h-0.5 bg-text-primary my-1 transition-colors duration-200"></span>
         </label>
       </div>
     </div>
@@ -94,14 +94,12 @@ const iconBtnClass =
       id="mobile-menu"
       class="peer-checked:block hidden absolute top-full left-0 right-0 z-50 border-b shadow-lg bg-bg-surface border-border"
     >
-      <div class="flex flex-col px-6 py-4">
-        <a href={anchors.about} class="block text-text-primary text-base font-semibold py-3 border-b border-border">{tr.nav_about}</a>
-        <a href={anchors.equipment} class="block text-text-primary text-base font-semibold py-3 border-b border-border"
-          >{tr.nav_equipment}</a
-        >
-        <a href={anchors.cases} class="block text-text-primary text-base font-semibold py-3 border-b border-border">{tr.nav_cases}</a>
-        <a href={anchors.contact} class="block text-text-primary text-base font-semibold py-3 border-b border-border">{tr.nav_contact}</a>
-        <div class="flex items-center pt-5 pb-2">
+      <div class="px-6 py-6 flex flex-col gap-4">
+        <a href={anchors.about} class="text-text-secondary text-base font-medium py-2 border-b border-border transition-colors duration-200 hover:text-text-primary">{tr.nav_about}</a>
+        <a href={anchors.equipment} class="text-text-secondary text-base font-medium py-2 border-b border-border transition-colors duration-200 hover:text-text-primary">{tr.nav_equipment}</a>
+        <a href={anchors.cases} class="text-text-secondary text-base font-medium py-2 border-b border-border transition-colors duration-200 hover:text-text-primary">{tr.nav_cases}</a>
+        <a href={anchors.contact} class="text-text-secondary text-base font-medium py-2 border-b border-border transition-colors duration-200 hover:text-text-primary">{tr.nav_contact}</a>
+        <div class="pt-2">
           <Button href={anchors.contact} variant="primary" class="w-full">
             {tr.nav_cta}
           </Button>
@@ -112,58 +110,26 @@ const iconBtnClass =
 </header>
 
 <style>
-  .icon-btn {
-    color: var(--text-primary);
-    opacity: 0.8;
-    border-color: color-mix(in srgb, var(--text-primary) 30%, transparent);
-  }
-
-  .icon-btn:hover {
-    opacity: 1;
-    color: var(--accent);
-    border-color: var(--accent);
-  }
-
-  /* added global for theme toggle and logo */
   .icon-moon {
-    display: none;
+    display: block;
   }
   .icon-sun {
-    display: block;
+    display: none;
   }
 
   :global([data-theme="light"]) .icon-moon {
-    display: block;
+    display: none;
   }
   :global([data-theme="light"]) .icon-sun {
-    display: none;
+    display: block;
   }
   :global([data-theme="dark"]) .icon-moon {
-    display: none;
+    display: block;
   }
   :global([data-theme="dark"]) .icon-sun {
-    display: block;
+    display: none;
   }
 
-  .logo-light {
-    display: none;
-  }
-  .logo-dark {
-    display: block;
-  }
-
-  :global([data-theme="light"]) .logo-light {
-    display: block;
-  }
-  :global([data-theme="light"]) .logo-dark {
-    display: none;
-  }
-  :global([data-theme="dark"]) .logo-light {
-    display: none;
-  }
-  :global([data-theme="dark"]) .logo-dark {
-    display: block;
-  }
 </style>
 
 <script is:inline>

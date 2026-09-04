@@ -1,0 +1,46 @@
+# Migeola
+
+> International freight forwarding, project cargo transport (OOG), and turnkey industrial equipment sourcing for B2B enterprises across Europe, Asia, the Middle East, and the Americas.
+
+Migeola is a logistics and equipment sourcing operator based in Warsaw, Poland. The company provides door-to-door multimodal freight solutions (road, ocean, rail, air) and direct commercial procurement of construction, agricultural, and industrial machinery. Migeola acts as a single point of contact for complex international supply chains.
+
+- Website: https://migeola.com
+- English Version: https://migeola.com/en
+- Headquarters: ul. Ostrobramska 101, 04-041 Warszawa, Poland
+- Phone: +48 666 557 461
+- Email: info@migeola.com
+- Full AI Knowledge Base: https://migeola.com/llms-full.txt
+
+---
+
+## Core Services
+
+- [International Freight Forwarding](https://migeola.com/#services): Full Truckload (FTL), Less than Truckload (LTL), ocean container freight (FCL/LCL), air cargo, and rail transport with door-to-door execution.
+- [Project Cargo & Heavy Haul (OOG)](https://migeola.com/#services): Transport of oversized and heavy cargo, including plant lines, excavators, and industrial structures with route planning, permits, and pilot escort.
+- [Industrial Equipment Sourcing](https://migeola.com/#equipment): B2B procurement of new and certified pre-owned construction, agricultural, and industrial machinery from European and Asian markets.
+- [Customs Clearance & Compliance](https://migeola.com/#services): Full export/import customs agency services, including EX-1, T1 declarations, EUR.1, CE documentation, and spare parts procurement.
+
+## Equipment Divisions
+
+- [Construction Machinery](https://migeola.com/#equipment): Sourcing excavators, wheel loaders, mobile cranes, and road construction equipment.
+- [Agricultural Technology](https://migeola.com/#equipment): Tractors (up to 500+ HP), combine harvesters, seeders, and specialized farming equipment.
+- [Industrial & Factory Lines](https://migeola.com/#equipment): Production lines, manufacturing equipment, industrial generators, and OEM spare parts.
+- [Special Vehicles & Fleets](https://migeola.com/#equipment): Commercial vehicles, utility fleets, motorcycles, and specialized utility machinery.
+
+## Operational Standards & Guarantees
+
+- [Operational Dossier](https://migeola.com/#about): Warsaw (PL/EU) transit hub connecting Western Europe, Gdynia, Hamburg, Rotterdam, Central Asia, and China.
+- [Why Migeola](https://migeola.com/#why): Cargo & CMR insurance, 100% vetted carrier network, transparent rate calculations with zero hidden fees.
+- [Turnkey Procurement Protocol](https://migeola.com/#equipment): 4-step execution covering technical audit, direct contract negotiations, customs clearance, and on-site delivery.
+- [Verified Case Studies](https://migeola.com/#cases): Track record across 4 continents, including intermodal shipments from Canada, Europe, Asia, and the Middle East.
+
+## Frequently Asked Questions & Inquiries
+
+- [FAQ](https://migeola.com/#faq): Answers regarding transit times, pricing variables, oversized cargo permits, equipment inspection, and customs clearance.
+- [Quote Request / Contact](https://migeola.com/#contact): B2B request form with < 24h response time for tailored freight and sourcing estimates.
+
+## Legal & Compliance
+
+- [Privacy Policy (Polityka Prywatności)](https://migeola.com/polityka-prywatnosci/): GDPR compliance, data processing standards, and user rights.
+- [Terms of Use (Regulamin)](https://migeola.com/regulamin/): General terms and rules of service.
+- [Cookie Policy (Polityka Cookies)](https://migeola.com/polityka-cookies/): Information on cookies and tracking technologies.

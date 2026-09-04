@@ -1,22 +1,33 @@
 ---
+interface Props {
+  variant?: "primary" | "ghost" | "text" | (string & {});
+  href?: string;
+  type?: "button" | "submit" | "reset";
+  class?: string;
+  id?: string;
+  [key: string]: any;
+}
+
 const {
   variant = "primary",
   href,
   type,
   class: className = "",
   ...rest
-} = Astro.props;
+} = Astro.props as Props;
 
 const base =
   "inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg font-semibold text-sm transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 cursor-pointer";
 
-const variants = {
+const variants: Record<string, string> = {
   primary:
-    "bg-accent text-white hover:bg-accent-dark shadow-lg shadow-blue-500/20",
+    "bg-accent text-white hover:bg-accent-dark shadow-md hover:shadow-lg",
   ghost:
     "border text-text-secondary hover:text-text-primary hover:bg-bg-card border-border hover:border-border-hover",
   text: "text-accent hover:text-accent-dark underline-offset-4 hover:underline px-0 py-0",
 };
+
+const variantClass = variants[variant] ?? variants.primary;
 
 const Element = href ? "a" : "button";
 ---
@@ -24,7 +35,7 @@ const Element = href ? "a" : "button";
 <Element
   href={href}
   type={type}
-  class={`${base} ${variants[variant] ?? variants.primary} ${className}`}
+  class={`${base} ${variantClass} ${className}`}
   {...rest}
 >
   <slot />

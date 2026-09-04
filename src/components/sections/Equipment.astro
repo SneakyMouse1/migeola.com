@@ -3,49 +3,58 @@ import SectionHeader from "../ui/SectionHeader.astro";
 import Button from "../ui/Button.astro";
 import EquipmentCard from "../ui/EquipmentCard.astro";
 
-const { tr } = Astro.props;
+const { tr, lang = 'pl' } = Astro.props;
+const isEN = lang === 'en' || tr.nav_about === 'About';
 
 const steps = [
   {
     n: 1,
     icon: 'search',
+    tagPL: 'ETAP // WERYFIKACJA',
+    tagEN: 'STEP // SOURCING',
     titlePL: 'Wyszukanie dostawcy',
     titleEN: 'Supplier Sourcing',
+    descPL: 'Weryfikacja bazy producentów, audyt stanu technicznego maszyn i historii serwisowej.',
+    descEN: 'Supplier network verification, machine technical audit and service history check.',
   },
   {
     n: 2,
     icon: 'handshake',
+    tagPL: 'ETAP // TRANSAKCJA',
+    tagEN: 'STEP // TRANSACTION',
     titlePL: 'Zakup & Negocjacje',
     titleEN: 'Purchase & Negotiations',
+    descPL: 'Bezpośrednie negocjacje handlowe, zabezpieczenie umowy zakupu i dokumentów eksportowych.',
+    descEN: 'Direct commercial negotiations, purchase agreement and export documentation.',
   },
   {
     n: 3,
     icon: 'truck',
+    tagPL: 'ETAP // LOGISTYKA',
+    tagEN: 'STEP // LOGISTICS',
     titlePL: 'Dostawa na miejsce',
     titleEN: 'Delivery on site',
+    descPL: 'Organizacja frachtu, pilotażu ponadgabarytowego, cła i rozładunku na placu zamawiającego.',
+    descEN: 'Freight organization, oversized cargo permits, customs and site offloading.',
   },
 ];
 
-// Determine step titles: use translation key if exists, else fallback
 function getStepTitle(step: any, tr: any) {
   const key = `eq_step_${step.n}_title`;
   if (tr[key]) return tr[key];
-  // Detect language by a known key
-  const isEN = tr.nav_about === 'About';
   return isEN ? step.titleEN : step.titlePL;
 }
 
 const cards = [
-  { titleKey: 'eq_1_title', descKey: 'eq_1_desc', icon: 'tractor' },
-  { titleKey: 'eq_2_title', descKey: 'eq_2_desc', icon: 'factory' },
-  { titleKey: 'eq_3_title', descKey: 'eq_3_desc', icon: 'car' },
-  { titleKey: 'eq_4_title', descKey: 'eq_4_desc', icon: 'hard-hat' },
+  { titleKey: 'eq_1_title', descKey: 'eq_1_desc', icon: 'tractor', code: 'AGRI_TECH' },
+  { titleKey: 'eq_2_title', descKey: 'eq_2_desc', icon: 'factory', code: 'INDUSTRY' },
+  { titleKey: 'eq_3_title', descKey: 'eq_3_desc', icon: 'car', code: 'SPECIAL_VEHICLES' },
+  { titleKey: 'eq_4_title', descKey: 'eq_4_desc', icon: 'hard-hat', code: 'HEAVY_BUILD' },
 ];
 ---
 
 <section id="equipment" class="py-20 lg:py-28 bg-bg-base">
   <div class="max-w-7xl mx-auto px-6 lg:px-12">
-
 
     <div data-reveal>
       <SectionHeader
@@ -56,54 +65,38 @@ const cards = [
       />
     </div>
 
-    <!-- 3-step process flow -->
-    <div class="relative grid md:grid-cols-3 gap-8 md:gap-4 mb-16" data-reveal>
-      <!-- Mobile vertical connector line (centered down steps) -->
-      <div 
-        class="md:hidden absolute left-1/2 -translate-x-1/2 top-10 bottom-10 w-0 border-l-2 border-dashed border-border/60 z-0 pointer-events-none"
-        aria-hidden="true"
-      ></div>
-
-      {steps.map((step, idx) => (
-        <div class="flex flex-col items-center text-center relative px-4 z-10">
-
-          <!-- Desktop horizontal connector line (centered through icons) -->
-          {idx < steps.length - 1 && (
-            <div
-              class="hidden md:block absolute top-[74px] lg:top-[82px] left-[50%] w-full h-0 border-t-2 border-dashed border-border/60 z-0 pointer-events-none"
-              aria-hidden="true"
-            ></div>
-          )}
-
-          <div
-            class="text-xs font-semibold tracking-widest uppercase mb-4 text-accent px-3 py-1 rounded-full bg-accent/10 border border-accent/20 relative z-10 bg-bg-base"
-          >
-            {tr.eq_step_label ?? (tr.nav_about === 'About' ? 'Step' : 'Krok')} {step.n}
+    <!-- Sourcing Process -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-16 border border-border/80 rounded-xl bg-bg-card/40 p-4 lg:p-6" data-reveal>
+      {steps.map((step) => (
+        <div class="p-5 rounded-lg border border-border/60 bg-bg-surface/60 flex flex-col justify-between hover:border-accent/30 transition-colors">
+          <div class="flex items-center justify-between gap-2 mb-4">
+            <span class="badge-tech badge-tech--accent">
+              {isEN ? step.tagEN : step.tagPL}
+            </span>
+            <i data-lucide={step.icon} class="w-4 h-4 text-accent/70"></i>
           </div>
 
-          <div
-            class="relative z-10 rounded-2xl border p-6 lg:p-8 bg-bg-card border-border shadow-md hover:border-accent/40 transition-colors"
-          >
-            <i data-lucide={step.icon} class="w-6 h-6 text-accent"></i>
+          <div>
+            <h3 class="text-base font-bold text-text-primary mb-1.5">
+              {getStepTitle(step, tr)}
+            </h3>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              {isEN ? step.descEN : step.descPL}
+            </p>
           </div>
-
-          <h3
-            class="text-base font-bold my-4 text-text-primary relative z-10 bg-bg-base px-2"
-          >
-            {getStepTitle(step, tr)}
-          </h3>
         </div>
       ))}
     </div>
 
-    <!-- Equipment categories -->
-    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-10 items-stretch">
-      {cards.map(({ titleKey, descKey, icon }, i) => (
+    <!-- Fleet Categories -->
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 mb-12 items-stretch">
+      {cards.map(({ titleKey, descKey, icon, code }, i) => (
         <div data-reveal data-delay={`${i * 100}`} class="h-full">
           <EquipmentCard
             title={tr[titleKey]}
             desc={tr[descKey]}
             icon={icon}
+            code={code}
           />
         </div>
       ))}

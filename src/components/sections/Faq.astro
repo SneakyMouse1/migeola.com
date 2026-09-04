@@ -2,6 +2,11 @@
 import SectionHeader from "../ui/SectionHeader.astro";
 import FaqItem from "../ui/FaqItem.astro";
 
+interface FaqItemType {
+  q: string;
+  a: string;
+}
+
 const { tr } = Astro.props;
 ---
 
@@ -16,13 +21,28 @@ const { tr } = Astro.props;
     </div>
 
     <div
-      class="max-w-3xl mx-auto rounded-xl border px-6 bg-bg-card border-border"
-      style="box-shadow: var(--shadow-card);"
+      class="max-w-3xl mx-auto rounded-xl border px-6 bg-bg-card border-border shadow-sm"
       data-reveal
     >
-      {tr.faqs.map((item) => (
+      {tr.faqs.map((item: FaqItemType) => (
         <FaqItem question={item.q} answer={item.a} />
       ))}
     </div>
   </div>
+
+  <script
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: tr.faqs.map((item: FaqItemType) => ({
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.a,
+        },
+      })),
+    })}
+  />
 </section>

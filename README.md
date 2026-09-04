@@ -1,51 +1,78 @@
 # Migeola - International Logistics & Equipment Sourcing
 
-Migeola is a high-conversion B2B landing page designed to generate qualified leads for an international logistics company. It presents complex services (freight forwarding, project cargo, equipment sourcing) in a clear, trust-building format tailored for global clients.
+Migeola is a B2B landing page for an international logistics and equipment sourcing company based in Warsaw, Poland. It presents freight forwarding, project cargo, equipment sourcing, and customs clearance services in a clear, conversion-oriented format tailored for commercial clients.
 
 ## Key Features
 
-- **Multilingual experience (EN/PL)**
-  Enables communication with both local and international clients, improving accessibility and SEO visibility.
+- **Multilingual Experience (EN / PL)**
+  Complete 1:1 symmetry between Polish and English versions with proper canonical links and `hreflang` tags.
 
-- **Clear service presentation**
-  Structured sections for Freight Forwarding, Project Cargo, and Equipment Sourcing simplify complex logistics offerings.
+- **AI & LLM-Ready (llms.txt & llms-full.txt)**
+  Implements the [llmstxt.org](https://llmstxt.org/) standard with `/llms.txt` (concise index) and `/llms-full.txt` (exhaustive company dossier, service specifications, case studies, and agent guidance) for AI search engines and autonomous agents.
 
-- **Conversion-focused contact system**
-  Fast and reliable inquiry flow with email delivery via Nodemailer, protected by Cloudflare Turnstile to prevent spam.
+- **Interactive Project Portfolio with Live Filtering**
+  Categorized track record across 4 continents with instant client-side filtering (`All Projects`, `Multimodal`, `Road & Heavy (OOG)`, `Ocean & Sea Freight`) and crisp SVG vector flag indicators via `flag-icons`.
 
-- **Performance-first frontend**
-  Built with Astro for fast loading, minimal JavaScript, and improved search engine indexing.
+- **Turnkey Sourcing Protocol**
+  Structured 4-stage framework for international equipment procurement: Technical Audit & Inspection → Direct Commercial Contracting → Customs & Regulatory Clearance → Turnkey On-Site Delivery.
 
-- **Responsive and modern UI**
-  Clean, adaptable interface with dark/light mode and subtle animations to enhance user experience without distraction.
+- **Conversion-Focused B2B Contact System**
+  Inquiry form with dynamic service-type chips, email delivery via Nodemailer, and spam protection via Cloudflare Turnstile.
 
-- **SEO-ready architecture**
-  Semantic HTML, sitemap generation, metadata, clear page structure, and proper heading hierarchy.
+- **Industrial Dark & Light Theme System**
+  Engineered with semantic CSS design tokens (`--color-bg-base`, `--color-bg-surface`, `--color-accent`, etc.) supporting instant theme switching with anti-flash inline script and theme-adaptive logos.
+
+- **Comprehensive SEO & Structured Data**
+  Includes OpenGraph image (1200×630), Twitter Cards, XML sitemap, and JSON-LD schemas (`Organization` and `FAQPage`).
+
+---
 
 ## Tech Stack
 
-- **Framework**: [Astro 6+](https://astro.build/) (SSR Mode)
+- **Framework**: [Astro 5+](https://astro.build/) (SSR Mode)
 - **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
-- **Icons**: [Lucide Astro](https://lucide.dev/)
+- **Icons**: [Lucide Astro](https://lucide.dev/) & [flag-icons](https://flagicons.lipis.dev/)
 - **Email**: [Nodemailer](https://nodemailer.com/)
 - **Security**: [Cloudflare Turnstile](https://www.cloudflare.com/products/turnstile/)
+- **AI Standard**: [llms.txt](https://llmstxt.org/) (`/llms.txt`, `/llms-full.txt`)
 - **Runtime**: Node.js (Adapter: `@astrojs/node`)
+
+---
 
 ## Project Structure
 
 ```text
 /
-├── public/          # Static assets (images, favicons, robots.txt)
+├── public/
+│   ├── cases/               # Real-world project delivery photographs
+│   ├── llms.txt             # AI agent index (llmstxt.org standard)
+│   ├── llms-full.txt        # Full AI master knowledge base & dossier
+│   ├── og-image.jpg         # OpenGraph sharing banner (1200x630)
+│   ├── robots.txt           # Crawler instructions and sitemap link
+│   ├── site.webmanifest     # PWA / web application manifest
+│   └── *.png, *.jpg         # Brand logos and hero imagery
 ├── src/
-│   ├── components/  # Astro & UI components (Sections, Buttons, Inputs)
-│   ├── i18n/        # Translation files (PL/EN)
-│   ├── layouts/     # Main page layouts
-│   ├── pages/       # Route components (including API routes)
-│   ├── scripts/     # Client-side JavaScript (animations, logic)
-│   └── styles/      # Global CSS and Tailwind configuration
-├── astro.config.mjs # Astro configuration (SSR, Adapters, Plugins)
-└── package.json     # Project dependencies and scripts
+│   ├── components/
+│   │   ├── sections/        # Page sections (Hero, Services, Equipment, Cases, Contact, etc.)
+│   │   ├── ui/              # Reusable UI components (Button, Input, CaseCard, SectionHeader, etc.)
+│   │   ├── Header.astro     # Sticky navigation with theme & language toggle
+│   │   └── Footer.astro     # Theme-adaptive footer with directory & legal links
+│   ├── i18n/
+│   │   ├── cases.ts         # Project cases data & image mappings
+│   │   └── translations.js  # Polish and English UI content dictionaries
+│   ├── layouts/
+│   │   └── Layout.astro     # Main HTML document layout with SEO & JSON-LD
+│   ├── pages/
+│   │   ├── api/contact.ts   # Server-side API endpoint for form processing
+│   │   ├── en/              # English version pages (Home, Privacy, Terms, Cookies)
+│   │   └── *.astro          # Polish version pages (Home, Privacy, Terms, Cookies)
+│   └── styles/
+│       └── global.css       # Tailwind v4 theme tokens, dark/light definitions
+├── astro.config.mjs         # Astro configuration (SSR, Node adapter, Sitemap, Tailwind)
+└── package.json             # Project dependencies and scripts
 ```
+
+---
 
 ## Getting Started
 
@@ -76,7 +103,7 @@ CONTACT_EMAIL=destination@example.com
 TURNSTILE_SECRET_KEY=your_cloudflare_turnstile_secret
 ```
 
-### 4. Development
+### 4. Development Server
 ```bash
 npm run dev
 ```
@@ -86,7 +113,9 @@ Starts the local development server at `http://localhost:4321`.
 ```bash
 npm run build
 ```
-Builds the production-ready application. Since it uses SSR, it will generate a server entry point in the `dist/` folder.
+Builds the standalone SSR server bundle into the `dist/` directory.
+
+---
 
 ## 📄 License
 All rights reserved. © 2026 Migeola.

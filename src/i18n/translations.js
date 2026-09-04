@@ -50,7 +50,7 @@ export const t = {
     strip_stat_4: 'Jeden punkt kontaktu',
 
     // About
-    about_label: '01 — O nas',
+    about_label: 'O nas',
     about_title: 'Jeden punkt kontaktu dla logistyki B2B',
     about_p1: 'Jesteśmy polską firmą logistyki międzynarodowej specjalizującą się w spedycji, transporcie ładunków projektowych i usługach sourcingu sprzętu dla klientów B2B. Współpracujemy z firmami potrzebującymi niezawodnego transportu towarów, wsparcia łańcucha dostaw i praktycznych rozwiązań w zakresie dostaw międzynarodowych do Europy, Azji, na Bliski Wschód i do Ameryki.',
     about_p2: 'Organizujemy rozwiązania spedycyjne dla ładunków handlowych, przesyłek przemysłowych, transportu maszyn, ładunków projektowych i dostaw sprzętu. Łączymy transport drogowy, morski, lotniczy, kolejowy i multimodalny, aby stworzyć najbardziej odpowiedni model logistyczny dla każdej przesyłki.',
@@ -82,7 +82,7 @@ export const t = {
     step_4_desc: 'Realizujemy cały łańcuch transportowy do miejsca docelowego.',
 
     // Services
-    services_label: '02 — Usługi',
+    services_label: 'Usługi',
     services_title: 'Nasze główne usługi',
     svc_1_title: 'Spedycja',
     svc_1_items: ['Transport drogowy', 'Transport morski', 'Transport lotniczy', 'Transport kolejowy', 'Dostawy multimodalne', 'Door-to-door'],
@@ -94,7 +94,7 @@ export const t = {
     svc_4_items: ['Odprawa celna', 'Dokumentacja spedycyjna', 'Części zamienne', 'Zarządzanie łańcuchem dostaw'],
 
     // Equipment
-    equipment_label: '03 — Sprzęt',
+    equipment_label: 'Sourcing sprzętu',
     equipment_title: 'Sourcing & dostawa sprzętu przemysłowego',
     equipment_p1: 'Wyszukujemy, kupujemy i dostarczamy sprzęt na całym świecie, oferując kompleksowe rozwiązania dopasowane do potrzeb Twojego biznesu.',
     equipment_p2: 'Łączymy proces zakupowy i logistyczny w jedną spójną usługę. Dostarczamy również części zamienne do maszyn rolniczych, pojazdów i sprzętu przemysłowego.',
@@ -146,7 +146,7 @@ export const t = {
     eq_sales_cta_note: "Nowe i używane · Europa, Azja i inne rynki",
 
     // Why us
-    why_label: '04 — Dlaczego my',
+    why_label: 'Dlaczego my',
     why_title: 'Nasze przewagi',
     why_items: [
       { title: 'Logistyka multimodalna', desc: 'Łączymy różne środki transportu dla optymalnej trasy każdej przesyłki.' },
@@ -158,10 +158,10 @@ export const t = {
     ],
 
     // Cases
-    cases_label: '05 — Realizacje',
+    cases_label: 'Realizacje',
     cases_title: 'Zrealizowane projekty',
     case_route: 'Trasa',
-    case_volume: 'Ilość',
+    case_volume: 'Wolumen',
     case_weight: 'Waga',
     case_transport: 'Transport',
     case_client: 'Klient',
@@ -204,7 +204,7 @@ export const t = {
     ],
 
     // FAQ
-    faq_label: '06 — FAQ',
+    faq_label: 'FAQ',
     faq_title: 'Najczęściej zadawane pytania',
     faqs: [
       { q: 'Jakie usługi logistyki międzynarodowej świadczycie?', a: 'Świadczymy usługi logistyki międzynarodowej obejmujące transport drogowy, morski, lotniczy, kolejowy, dostawy multimodalne, spedycję, transport ładunków projektowych oraz sourcing sprzętu dla klientów B2B.' },
@@ -225,7 +225,7 @@ export const t = {
     cta_btn: 'Wyślij zapytanie',
 
     // Contact
-    contact_label: '07 — Kontakt',
+    contact_label: 'Kontakt',
     contact_title: 'Zapytaj o wycenę spedycji lub sourcingu sprzętu',
     contact_desc: 'Prosimy o przesłanie zapytania transportowego lub sourcingowego — nasz zespół przygotuje odpowiednie rozwiązanie logistyczne dla Twojego biznesu.',
     contact_phone: 'Telefon',
@@ -306,7 +306,7 @@ export const t = {
     strip_stat_4: 'Single point of contact',
 
     // About
-    about_label: '01 — About',
+    about_label: 'About',
     about_title: 'One point of contact for B2B logistics',
     about_p1: 'We are a Poland-based international logistics company specializing in freight forwarding, project cargo transport and equipment sourcing services for B2B clients. We work with businesses that need reliable cargo transportation, supply chain support and practical solutions for international deliveries across Europe, Asia, the Middle East and America.',
     about_p2: 'We organize freight forwarding solutions for commercial cargo, industrial shipments, machinery transport, project cargo and equipment delivery. We combine road freight, sea freight, air freight, rail freight and multimodal transport to create the most suitable logistics model for each shipment.',
@@ -338,7 +338,7 @@ export const t = {
     step_4_desc: 'We execute the full transport chain to the destination.',
 
     // Services
-    services_label: '02 — Services',
+    services_label: 'Services',
     services_title: 'Our core services',
     svc_1_title: 'Freight Forwarding',
     svc_1_items: ['Road freight', 'Sea freight', 'Air freight', 'Rail transport', 'Multimodal delivery', 'Door-to-door'],
@@ -350,7 +350,7 @@ export const t = {
     svc_4_items: ['Customs clearance', 'Documentation', 'Spare parts supply', 'Supply chain management'],
 
     // Equipment
-    equipment_label: '03 — Equipment',
+    equipment_label: 'Equipment Sourcing',
     equipment_title: 'Sourcing & delivery of industrial equipment',
     equipment_p1: 'We source, purchase and deliver equipment worldwide, providing complete solutions tailored to your business needs.',
     equipment_p2: 'We combine procurement and logistics into one seamless process. We also supply spare parts for agricultural machinery, vehicles and industrial equipment.',
@@ -402,7 +402,7 @@ export const t = {
     eq_sales_cta_note: "New & used · Europe, Asia & beyond",
 
     // Why us
-    why_label: '04 — Why us',
+    why_label: 'Why us',
     why_title: 'Our advantages',
     why_items: [
       { title: 'Multimodal logistics', desc: 'We combine transport modes to find the optimal route for each shipment.' },
@@ -414,7 +414,7 @@ export const t = {
     ],
 
     // Cases
-    cases_label: '05 — Case Studies',
+    cases_label: 'Case Studies',
     cases_title: 'Projects delivered',
     case_route: 'Route',
     case_volume: 'Volume',
@@ -460,7 +460,7 @@ export const t = {
     ],
 
     // FAQ
-    faq_label: '06 — FAQ',
+    faq_label: 'FAQ',
     faq_title: 'Frequently Asked Questions',
     faqs: [
       { q: 'What international logistics services do you provide?', a: 'We provide international logistics services including road freight, sea freight, air freight, rail transport, multimodal delivery, freight forwarding, project cargo transport and equipment sourcing services for B2B clients.' },
@@ -481,7 +481,7 @@ export const t = {
     cta_btn: 'Send a request',
 
     // Contact
-    contact_label: '07 — Contact',
+    contact_label: 'Contact',
     contact_title: 'Request a Freight Forwarding or Equipment Sourcing Quote',
     contact_desc: 'Please send us your transport or sourcing request and our team will prepare a suitable logistics solution for your business.',
     contact_phone: 'Phone',

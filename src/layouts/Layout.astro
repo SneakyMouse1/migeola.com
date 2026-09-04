@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import "flag-icons/css/flag-icons.min.css";
 
 const {
   title,
@@ -44,6 +45,10 @@ const enUrl = Astro.props.enUrl ?? "https://migeola.com/en/";
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
 
+    <!-- AI / LLM Context -->
+    <link rel="alternate" type="text/markdown" href="/llms.txt" title="LLMs.txt" />
+    <link rel="alternate" type="text/markdown" href="/llms-full.txt" title="LLMs-full.txt" />
+
     <!-- Canonical -->
     <link rel="canonical" href={canonical} />
 
@@ -72,11 +77,11 @@ const enUrl = Astro.props.enUrl ?? "https://migeola.com/en/";
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={`${siteUrl}/og-image.jpg`} />
 
-    <!-- Fonts: Sora (заголовки) + Inter (тело) -->
+    <!-- Fonts: Space Grotesk (заголовки) + Inter (интерфейс/текст) + JetBrains Mono (технические метки) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap"
       rel="stylesheet"
     />
 
@@ -89,7 +94,7 @@ const enUrl = Astro.props.enUrl ?? "https://migeola.com/en/";
         "@id": "https://migeola.com/#organization",
         name: "Migeola",
         url: "https://migeola.com",
-        logo: "https://migeola.com/favicon.svg",
+        logo: "https://migeola.com/android-chrome-512x512.png",
         image: "https://migeola.com/og-image.jpg",
         description:
           "International freight forwarding, project cargo transport and equipment sourcing for B2B clients.",
@@ -97,6 +102,8 @@ const enUrl = Astro.props.enUrl ?? "https://migeola.com/en/";
         email: "info@migeola.com",
         address: {
           "@type": "PostalAddress",
+          streetAddress: "ul. Ostrobramska 101",
+          postalCode: "04-041",
           addressLocality: "Warszawa",
           addressCountry: "PL",
         },
@@ -110,7 +117,8 @@ const enUrl = Astro.props.enUrl ?? "https://migeola.com/en/";
         ],
         contactPoint: {
           "@type": "ContactPoint",
-          contactType: "sales",
+          telephone: "+48666557461",
+          contactType: "customer service",
           availableLanguage: ["English", "Polish"],
         },
       })}

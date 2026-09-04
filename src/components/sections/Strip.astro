@@ -3,42 +3,51 @@ const { tr } = Astro.props;
 
 const stats = [
   {
-    icon: 'folder-check',
+    code: 'OPERATIONS',
     value: tr.strip_stat_1_val ?? '47+',
     label: tr.strip_stat_1_lbl ?? tr.strip_stat_1 ?? 'Zrealizowanych projektów',
+    detail: 'Pełen cykl spedycyjny',
   },
   {
-    icon: 'globe',
+    code: 'NETWORK',
     value: tr.strip_stat_2_val ?? '4',
     label: tr.strip_stat_2_lbl ?? tr.strip_stat_2 ?? 'Kontynenty operacji',
+    detail: 'Europa, Azja, ME, Ameryka',
   },
   {
-    icon: 'building-2',
+    code: 'SEGMENT',
     value: tr.strip_stat_3_val ?? 'B2B',
     label: tr.strip_stat_3_lbl ?? tr.strip_stat_3 ?? 'Dedykowana obsługa firm',
+    detail: 'Bezpośrednie umowy i partnerzy',
   },
   {
-    icon: 'user-check',
+    code: 'DISPATCH',
     value: tr.strip_stat_4_val ?? '1',
-    label: tr.strip_stat_4_lbl ?? tr.strip_stat_4 ?? 'Punkt kontaktu door-to-door',
+    label: tr.strip_stat_4_lbl ?? tr.strip_stat_4 ?? 'Dedykowany spedytor',
+    detail: 'Punkt kontaktu door-to-door',
   },
 ];
 ---
 
-<section class="relative z-20 bg-bg-surface/80 border-y border-border backdrop-blur-md py-6 lg:py-8">
-  <div class="max-w-7xl mx-auto px-6 lg:px-12">
-    <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
+<section class="relative z-20 bg-bg-surface/90 border-y border-border backdrop-blur-md">
+  <div class="max-w-7xl mx-auto px-6 lg:px-12 py-8 lg:py-10">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-border/80 border border-border/80 rounded-xl bg-bg-card/40 overflow-hidden shadow-sm">
       {stats.map((stat) => (
-        <div class="flex items-center gap-3.5 p-4 rounded-xl bg-bg-card/40 border border-border/60 hover:border-accent/30 transition-all duration-300 group">
-          <div class="w-11 h-11 rounded-lg bg-accent/10 border border-accent/20 flex items-center justify-center shrink-0 text-accent group-hover:scale-105 transition-transform">
-            <i data-lucide={stat.icon} class="w-5 h-5" aria-hidden="true"></i>
+        <div class="p-6 lg:p-7 flex flex-col justify-between hover:bg-bg-card/70 transition-colors">
+          <div class="flex items-center justify-between gap-2 mb-4">
+            <span class="font-mono-tech text-xs font-semibold tracking-wider text-accent uppercase">
+              // {stat.code}
+            </span>
           </div>
-          <div class="min-w-0">
-            <div class="text-2xl lg:text-3xl font-extrabold text-text-primary tracking-tight leading-none mb-1">
+          <div>
+            <div class="text-3xl lg:text-4xl font-extrabold text-text-primary tracking-tight font-mono-tech mb-2">
               {stat.value}
             </div>
-            <div class="text-xs font-medium text-text-secondary leading-snug truncate">
+            <div class="text-sm font-semibold text-text-primary leading-snug">
               {stat.label}
+            </div>
+            <div class="text-xs text-text-muted mt-1.5">
+              {stat.detail}
             </div>
           </div>
         </div>

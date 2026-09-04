@@ -4,7 +4,7 @@ const { tr } = Astro.props;
 ---
 
 <section
-  class="relative min-h-[90vh] flex items-center py-20 lg:py-28 overflow-hidden"
+  class="relative min-h-[85vh] flex items-center py-20 lg:py-28 overflow-hidden"
 >
   <div class="absolute inset-0 z-0 pointer-events-none overflow-hidden">
     <img
@@ -21,24 +21,50 @@ const { tr } = Astro.props;
   </div>
 
   <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full">
-    <div class="max-w-2xl" data-reveal>
-      <h1 class="hero-title text-5xl md:text-6xl font-bold leading-tight mb-6">
+    <div class="max-w-3xl" data-reveal>
+      <div class="mb-5">
+        <span class="badge-tech badge-tech--accent tracking-wider font-semibold py-1 px-3 text-xs">
+          GLOBAL FREIGHT & SOURCING OPERATOR
+        </span>
+      </div>
+
+      <h1 class="hero-title text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight tracking-tight mb-6">
         {tr.hero_title_1}<br />
         <span class="text-accent">{tr.hero_title_2}</span>
       </h1>
 
-      <p class="hero-desc text-xl mb-10 max-w-lg">
+      <p class="hero-desc text-lg sm:text-xl leading-relaxed mb-10 max-w-xl">
         {tr.hero_desc}
       </p>
 
-      <div class="flex flex-wrap gap-4">
-        <Button href="#contact" variant="primary">
+      <div class="flex flex-wrap gap-4 mb-12">
+        <Button href="#contact" variant="primary" class="text-base px-6 py-3.5">
           {tr.hero_cta}
           <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
         </Button>
-        <Button href="#cases" variant="ghost" class="hero-ghost-btn">
+        <Button href="#cases" variant="ghost" class="hero-ghost-btn text-base px-6 py-3.5">
           {tr.hero_cases}
         </Button>
+      </div>
+
+      <!-- Logistics Corridors -->
+      <div class="pt-6 border-t border-border/50 max-w-xl">
+        <p class="text-xs font-mono-tech tracking-wider uppercase text-text-muted mb-2">
+          {tr.nav_about === 'About' ? 'Primary logistics corridors & transit hubs' : 'Główne korytarze & węzły logistyczne'}
+        </p>
+        <div class="flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs font-mono-tech font-medium text-text-secondary">
+          <span>WARSZAWA</span>
+          <span class="text-text-muted">/</span>
+          <span>GDYNIA</span>
+          <span class="text-text-muted">/</span>
+          <span>HAMBURG</span>
+          <span class="text-text-muted">/</span>
+          <span>ROTTERDAM</span>
+          <span class="text-text-muted">/</span>
+          <span>SHANGHAI</span>
+          <span class="text-text-muted">/</span>
+          <span>ALMATY</span>
+        </div>
       </div>
     </div>
   </div>
